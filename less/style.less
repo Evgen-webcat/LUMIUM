@@ -1,0 +1,58 @@
+//out: ../css/style.css, compress: true, autoprefixer: true
+@import "reset";
+@import "fonts";
+@import "color";
+@import "anim";
+
+body {
+    font-family: ProximaNova;
+    background-color: #000;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+
+    &_logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 120px;
+    }
+
+    &_content {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+
+        &_text {
+            color: #9C9E9F;
+            text-align: center;
+
+            .cookies_button {
+                color: #fff;
+                font-family: ProximaNova-Semibold;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &_button {
+            display: inline-block;
+            margin: 15px auto 0;
+            border: 1px solif #B1B3B4;
+        }
+    }
+}
+
+@import "media";
