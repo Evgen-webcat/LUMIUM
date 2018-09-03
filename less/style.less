@@ -10,6 +10,7 @@ body {
 }
 
 .preloader {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -26,12 +27,24 @@ body {
         height: 120px;
     }
 
+    .radiowaves {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 150px;
+        border: 2px solid #00ace3;
+        border-radius: 50%;
+        animation: radiowaves 5s infinite;
+    }
+
     &_content {
         position: absolute;
         bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-        width: 500px;
+        width: 530px;
 
         &_text {
             color: #9C9E9F;
@@ -48,9 +61,117 @@ body {
         }
 
         &_button {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
             display: inline-block;
-            margin: 15px auto 0;
-            border: 1px solif #B1B3B4;
+            margin-top: 15px;
+            padding: 0 20px;
+            border: 1px solid #B1B3B4;
+            color: #9C9E9F;
+            font-size: .875rem;
+            text-transform: uppercase;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, .2);
+            }
+
+            .checkmark {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .menu-link {
+        color: #000;
+    }
+}
+
+.header {
+    width: 100%;
+    overflow-x: hidden;
+    .logo-wrap {
+        padding: 20px;
+        float: left;
+
+        .logo {
+            width: 150px;
+        }
+    }
+
+    .menu-button-wrap {
+        float: right;
+
+        .menu-button {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            display: block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #000;
+            transition: .5s ease-in-out;
+
+            .burger {
+                position: absolute;
+                top: 132px;
+                left: 50px;
+                transform: translateY(-50%);
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: #fff;
+                transform-origin: center;
+                transition: .5s ease-in-out;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background: #fff;
+                    transition: .5s ease-in-out;
+                }
+
+                &::before {
+                    top: -10px;
+                }
+
+                &::after {
+                    bottom: -10px;
+                }
+            }
+        }
+
+        .menu-open {
+            background-color: #fff;
+            box-shadow: 0 0 0 100vw #fff, 0 0 0 100vh #000;
+            border-radius: 0;
+            .burger {
+                transform: rotate(45deg);
+                background: #000;
+                &::before {
+                    transform: rotate(90deg);
+                    top: 0;
+                    background: #000;
+                }
+                &::after {
+                    transform: rotate(90deg);
+                    bottom: 0;
+                    background: #000;
+                }
+            }
         }
     }
 }
