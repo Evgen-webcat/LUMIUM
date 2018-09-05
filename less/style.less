@@ -4,6 +4,10 @@
 @import "color";
 @import "anim";
 
+html {
+    font-size: 20px;
+}
+
 body {
     font-family: ProximaNova;
     color: #B1B3B4;
@@ -27,10 +31,11 @@ body {
     position: relative;
     z-index: 1;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px;
     box-sizing: border-box;
-    font-family: ProximaNova-Bold;
+    font-family: ProximaNova-Semibold;
     color: #9C9E9F;
+    letter-spacing: 2px;
     text-transform: uppercase;
     border: 1px solid #B1B3B4;
     overflow: hidden;
@@ -57,6 +62,7 @@ body {
             box-sizing: border-box;
         }
     }
+
     &.click {
         animation: pulse 1s;
         box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
@@ -65,6 +71,7 @@ body {
 
 .preloader {
     display: none;
+    z-index: 9999;
     position: fixed;
     top: 0;
     left: 0;
@@ -86,11 +93,7 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 150px;
-        height: 150px;
-        border: 2px solid #00ace3;
-        border-radius: 50%;
-        animation: radiowaves 5s infinite;
+        height: 100vh;
     }
 
     &_content {
@@ -115,23 +118,18 @@ body {
         }
 
         &_button {
-            position: relative;
             left: 50%;
             transform: translateX(-50%);
-            display: inline-block;
-            margin-top: 15px;
-            padding: 0 20px;
-            border: 1px solid #B1B3B4;
-            color: #9C9E9F;
-            font-size: .875rem;
-            text-transform: uppercase;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, .2);
-            }
+            margin-top: 30px;
+            padding: 0 40px;
+            font-size: .9rem;
+            font-family: ProximaNova;
 
             .checkmark {
-                font-size: 1rem;
+                display: inline-block;
+                margin-right: 5px;
+                transform: translateY(3px);
+                font-size: 1.2rem;
             }
         }
     }
@@ -153,11 +151,11 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
-        line-height: 38px;
+        line-height: 4.8rem;
 
         .menu-link {
             color: #9C9E9F;
-            font-size: 24px;
+            font-size: 2.95rem;
             text-transform: uppercase;
 
             &:hover {
@@ -186,12 +184,13 @@ body {
 
         &_link {
             color: #87888A;
+            font-size: 1.5rem;
             text-transform: uppercase;
 
             &:hover,
             &.active {
                 color: #D9DADB;
-                font-family: ProximaNova-Bold;
+                font-family: ProximaNova-Semibold;
             }
         }
     }
@@ -267,9 +266,9 @@ body {
 
 
     .menu-open {
-        box-shadow: 0 0 0 100vw #fff, 0 0 0 100vh #000;
+        box-shadow: 0 0 0 100vw #000, 0 0 0 100vh #fff;
         border-radius: 0;
-        background-color: #fff;
+        background-color: #000;
 
         .burger {
             transform: rotate(45deg);
@@ -288,18 +287,20 @@ body {
 }
 
 .page_1 {
-    padding: 50px 150px 0;
+    padding: 100px 10% 0;
     box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
 
     .text {
         width: 50%;
-        padding: 10px 50px;
+        padding: 10px;
         box-sizing: border-box;
 
         .armand-logo,
         .logo {
             display: block;
-            width: 300px;
+            width: 70%;
         }
 
         .logo {
@@ -308,17 +309,176 @@ body {
 
         &_tagline {
             margin: 50px 0;
-            font-size: 1.125rem;
+            font-size: 1.8rem;
             font-family: ProximaNova-Bold;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         &_caption {
+            font-size: 1.55rem;
             margin-bottom: 30px;
         }
 
         &_paragraph {
+            font-size: 1.55rem;
             margin-bottom: 50px;
+        }
+    }
+
+    .product_slider {
+        width: 50%;
+
+        &_slide {
+            &_button {
+                position: relative;
+                display: block;
+
+                .flask {
+                    margin-top: 80px;
+                    width: 90%;
+                }
+
+                .box {
+                    z-index: -1;
+                    position: absolute;
+                    top: -50px;
+                    left: 45%;
+                    width: 45%;
+                }
+            }
+        }
+    }
+}
+
+.page_2 {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+
+    .products_slider {
+        margin: 0 auto;
+        width: 90%;
+
+        &_slide {
+            width: 500px;
+
+            &_button {
+                position: relative;
+                display: block;
+                color: #B1B3B4;
+                text-align: center;
+
+                &_name {
+                    font-size: 1.55rem;
+                    font-family: ProximaNova-Bold;
+                }
+
+                &_description {
+                    margin-top: 10px;
+                    font-family: ProximaNova-Semibold;
+                }
+
+                &_info {
+                    margin-top: 3px;
+                }
+
+                .flask {
+                    margin-top: 80px;
+                    width: 90%;
+                }
+
+                .box {
+                    z-index: -1;
+                    position: absolute;
+                    top: -50px;
+                    left: 45%;
+                    width: 45%;
+                }
+            }
+        }
+    }
+}
+
+.page_3 {
+    display: none;
+    .character {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+
+    &_content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 10%;
+        box-sizing: border-box;
+        display: flex;
+
+        .text {
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+
+            .armand-logo {
+                display: block;
+                width: 70%;
+            }
+
+            &_tagline {
+                margin: 50px 0;
+                font-size: 1.8rem;
+                font-family: ProximaNova-Bold;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            &_caption {
+                font-size: 1.55rem;
+                margin-bottom: 30px;
+            }
+
+            &_paragraph {
+                font-size: 1.55rem;
+                margin-bottom: 50px;
+            }
+        }
+
+        &_video {
+            position: relative;
+            width: 50%;
+
+            &_button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #B1B3B4;
+                text-align: center;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                font-family: ProximaNova-Bold;
+                transition: .3s;
+
+                .watch_video_img {
+                    display: block;
+                    margin: 0 auto 20px;
+                    width: 50px;
+                }
+
+                &:hover {
+                    color: #D9DADB;
+
+                    .watch_video_img {
+                        transform: scale(1.05);
+                    }
+                }
+            }
         }
     }
 }
