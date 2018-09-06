@@ -11,6 +11,8 @@ html {
 body {
     font-family: ProximaNova;
     color: #B1B3B4;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .background {
@@ -196,6 +198,30 @@ body {
     }
 }
 
+.text {
+    width: 50%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+
+    &_tagline {
+        margin: 50px 0;
+        font-size: 1.8rem;
+        font-family: ProximaNova-Bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    &_caption {
+        font-size: 1.55rem;
+        margin-bottom: 30px;
+    }
+
+    &_paragraph {
+        font-size: 1.55rem;
+        margin-bottom: 50px;
+    }
+}
+
 .mouse {
     position: absolute;
     left: 50%;
@@ -209,8 +235,10 @@ body {
     overflow-x: hidden;
 
     .logo-wrap {
-        padding: 20px;
-        float: left;
+        z-index: 999;
+        position: absolute;
+        top: 20px;
+        left: 20px;
 
         .logo {
             width: 150px;
@@ -286,16 +314,27 @@ body {
     }
 }
 
+.main {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .page_1 {
-    padding: 100px 10% 0;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: flex-start;
+    display: none;
+
+    &_content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 10%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
 
     .text {
-        width: 50%;
-        padding: 10px;
-        box-sizing: border-box;
 
         .armand-logo,
         .logo {
@@ -305,24 +344,6 @@ body {
 
         .logo {
             margin-top: 30px;
-        }
-
-        &_tagline {
-            margin: 50px 0;
-            font-size: 1.8rem;
-            font-family: ProximaNova-Bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        &_caption {
-            font-size: 1.55rem;
-            margin-bottom: 30px;
-        }
-
-        &_paragraph {
-            font-size: 1.55rem;
-            margin-bottom: 50px;
         }
     }
 
@@ -335,14 +356,14 @@ body {
                 display: block;
 
                 .flask {
-                    margin-top: 80px;
+                    margin-top: 150px;
                     width: 90%;
                 }
 
                 .box {
                     z-index: -1;
                     position: absolute;
-                    top: -50px;
+                    top: -110px;
                     left: 45%;
                     width: 45%;
                 }
@@ -373,6 +394,7 @@ body {
                 text-align: center;
 
                 &_name {
+                    margin-top: 30px;
                     font-size: 1.55rem;
                     font-family: ProximaNova-Bold;
                 }
@@ -387,14 +409,14 @@ body {
                 }
 
                 .flask {
-                    margin-top: 80px;
+                    margin-top: 110px;
                     width: 90%;
                 }
 
                 .box {
                     z-index: -1;
                     position: absolute;
-                    top: -50px;
+                    top: -80px;
                     left: 45%;
                     width: 45%;
                 }
@@ -405,12 +427,6 @@ body {
 
 .page_3 {
     display: none;
-    .character {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-    }
 
     &_content {
         position: absolute;
@@ -421,65 +437,145 @@ body {
         display: flex;
 
         .text {
-            width: 50%;
-            padding: 10px;
-            box-sizing: border-box;
 
             .armand-logo {
                 display: block;
                 width: 70%;
             }
+        }
+    }
 
-            &_tagline {
-                margin: 50px 0;
-                font-size: 1.8rem;
-                font-family: ProximaNova-Bold;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-            }
+    &_video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100vh;
+        color: #B1B3B4;
+        text-align: center;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        font-family: ProximaNova-Bold;
+        cursor: pointer;
 
-            &_caption {
-                font-size: 1.55rem;
-                margin-bottom: 30px;
-            }
+        .character {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            height: 100%;
+            transition: .3s;
+        }
 
-            &_paragraph {
-                font-size: 1.55rem;
-                margin-bottom: 50px;
+        &_button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .watch_video_img {
+                display: block;
+                margin: 0 auto 20px;
+                width: 50px;
             }
         }
 
-        &_video {
-            position: relative;
-            width: 50%;
+        &:hover .character {
+            filter: grayscale(100%);
+        }
+    }
+
+    .youtube_video {
+        display: none;
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+    }
+}
+
+.page_4 {
+    display: block;
+
+    &_content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 10%;
+        box-sizing: border-box;
+        display: flex;
+
+        .text {
 
             &_button {
+                position: relative;
+                padding-bottom: 5px;
+                color: #B1B3B4;
+                font-size: 1.15rem;
+                font-family: ProximaNova-Semibold;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                transition: .5s;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #B1B3B4;
+                    backface-visibility: hidden;
+                    transform: translateZ(0) scale(1.0, 1.0);
+                    filter: blur(0);
+                }
+
+                &::after {
+                    width: 0;
+                    background-color: #fff;
+                    transform-origin: left;
+                    transition: .5s;
+                }
+
+                &:hover {
+                    color: #fff;
+                }
+
+                &:hover::after {
+                    width: 100%;
+                }
+            }
+        }
+        .diagram {
+            position: relative;
+            width: 50%;
+            .dot {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                color: #B1B3B4;
-                text-align: center;
-                font-size: 1.8rem;
-                text-transform: uppercase;
-                font-family: ProximaNova-Bold;
-                transition: .3s;
-
-                .watch_video_img {
-                    display: block;
-                    margin: 0 auto 20px;
-                    width: 50px;
-                }
-
-                &:hover {
-                    color: #D9DADB;
-
-                    .watch_video_img {
-                        transform: scale(1.05);
-                    }
-                }
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #fff;
             }
         }
+    }
+}
+
+#logo_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    image {
+        display: none;
     }
 }
 

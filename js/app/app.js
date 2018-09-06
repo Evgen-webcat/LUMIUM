@@ -18,4 +18,14 @@ $(document).ready(function () {
             1000
         );
     });
+
+    $('.page_3_video').click(function () {
+        $('.page_3_content').fadeOut(1000);
+        setTimeout(function () {
+            $('.youtube_video').fadeIn(1000);
+        }, 1000);
+    });
+
+    new Vivus('logo_img');
+
 });
