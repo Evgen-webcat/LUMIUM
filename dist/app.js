@@ -93,7 +93,18 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("$(document).ready(function () {\n    $('.preloader_content_button').click(function () {\n        $('.preloader').fadeOut();\n    });\n\n    $('.menu-button').click(function () {\n        $(this).toggleClass('menu-open');\n        $('.menu').fadeToggle();\n    });\n\n    $('.button').click(function () {\n        var button = $(this);\n        $(button).addClass('click');\n        setTimeout(\n            function () {\n                $(button).removeClass('click');\n            },\n            1000\n        );\n    });\n\n    $('.page_3_video').click(function () {\n        $('.page_3_content').fadeOut(1000);\n        setTimeout(function () {\n            $('.youtube_video').fadeIn(1000);\n        }, 1000);\n    });\n    \n    new Vivus('logo_img');\n    \n});\n\n\n//# sourceURL=webpack:///./js/app/app.js?");
+eval("$(document).ready(function () {\n    $('.preloader_content_button').click(function () {\n        $('.preloader').fadeOut();\n    });\n\n    $('.menu-button').click(function () {\n        $(this).toggleClass('menu-open');\n        $('.menu').fadeToggle();\n    });\n\n    $('.button').click(function () {\n        var button = $(this);\n        $(button).addClass('click');\n        setTimeout(\n            function () {\n                $(button).removeClass('click');\n            },\n            1000\n        );\n    });\n//    new Vivus('logo_img');\n\n});\n\n\n//# sourceURL=webpack:///./js/app/app.js?");
+
+/***/ }),
+
+/***/ "./js/app/mouse_parallax.js":
+/*!**********************************!*\
+  !*** ./js/app/mouse_parallax.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("$(document).ready(function () {\r\n    var img = document.getElementById('parallax_block');\r\n    var parallax_img = new Parallax(img);\r\n});\n\n//# sourceURL=webpack:///./js/app/mouse_parallax.js?");
 
 /***/ }),
 
@@ -104,7 +115,7 @@ eval("$(document).ready(function () {\n    $('.preloader_content_button').click(
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("$(document).ready(function () {\n    $('.product_slider').slick({\n        arrows: false,\n        fade: true,\n        speed: 1200,\n        autoplay: true\n    });\n    \n    $('.product_slider').slick('setPosition');\n\n    $('.products_slider').slick({\n        slidesToShow: 3,\n        infinite: false\n    });\n    \n    $('.products_slider').slick('setPosition');\n});\n\n\n//# sourceURL=webpack:///./js/app/sliders.js?");
+eval("$(document).ready(function () {\n    $('.product_slider').slick({\n        arrows: false,\n        fade: true,\n        speed: 5000,\n        autoplay: true\n    });\n\n    $('.product_slider').slick('setPosition');\n\n    $('.products_slider').slick({\n        slidesToShow: 3,\n        infinite: false\n    });\n\n    $('.products_slider').slick('setPosition');\n});\n\n\n//# sourceURL=webpack:///./js/app/sliders.js?");
 
 /***/ }),
 
@@ -126,18 +137,29 @@ eval("$(document).ready(function () {\n    function draw() {\n        con.clearR
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("$(document).ready(function () {\n\n    function bindWheel() {\n        $(window).bind('mousewheel', function (event) {\n        event.preventDefault();\n            wheel(event);\n        });\n    }\n\n    bindWheel ();\n\n    function wheel(event) {\n        if (event.originalEvent.wheelDelta / 120 < 0) {\n            nextPage();\n        } else {\n            prevPage();\n        }\n    };\n\n    var currentPage = 0;\n    var page = $('.page');\n\n    function nextPage() {\n        if (currentPage < page.length - 1) {\n            $(window).unbind('mousewheel');\n        page.eq(currentPage).fadeOut(500);\n        currentPage++;\n        setTimeout(\n            function () {\n                page.eq(currentPage).fadeIn();\n            },\n            500);\n        setTimeout(function () {\n            bindWheel ();\n        }, 1000);\n    }\n    };\n\n    function prevPage() {\n    if (currentPage > 0) {\n            $(window).unbind('mousewheel');\n        page.eq(currentPage).fadeOut(500);\n        currentPage--;\n        setTimeout(\n            function () {\n                page.eq(currentPage).fadeIn();\n            },\n            500);\n        setTimeout(function () {\n            bindWheel ();\n        }, 1000);\n}\n    };\n});\n\n\n//# sourceURL=webpack:///./js/app/whell.js?");
+eval("$(document).ready(function () {\n    'use strict';\n\n    var currentPage = 0;\n    var page = $('.page');\n\n    function bindWheel() {\n        $(window).bind('mousewheel', function (event) {\n            event.preventDefault();\n            wheel(event);\n        });\n    }\n\n    bindWheel();\n\n    function wheel(event) {\n        if (event.originalEvent.wheelDelta / 120 < 0) {\n            nextPage();\n        } else {\n            prevPage();\n        }\n    };\n\n    function togglePage(direction) {\n        $(window).unbind('mousewheel');\n        page.eq(currentPage).fadeOut(500);\n        if (direction == 'next') {\n            currentPage++;\n        } else if (direction == 'prev') {\n            currentPage--;\n        }\n        setTimeout(\n            function () {\n                page.eq(currentPage).fadeIn();\n            },\n            500);\n        setTimeout(function () {\n            bindWheel();\n        }, 1000);\n        if (currentPage == 4) {\n            setTimeout(function () {\n                $('.mouse').addClass('mouse-white');\n            }, 500);\n        } else {\n            $('.mouse').removeClass('mouse-white');\n        }\n    }\n\n    function nextPage() {\n        if (currentPage < page.length - 1) {\n            togglePage('next');\n        }\n    };\n\n    function prevPage() {\n        if (currentPage > 0) {\n            togglePage('prev');\n        }\n    };\n});\n\n\n//# sourceURL=webpack:///./js/app/whell.js?");
+
+/***/ }),
+
+/***/ "./js/app/youtube.js":
+/*!***************************!*\
+  !*** ./js/app/youtube.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("$(document).ready(function () {\r\n    $('.page_3_video').click(function () {\r\n        $('.page_3_content, .page_3_video, header').fadeOut(1000);\r\n        setTimeout(function () {\r\n            $('.youtube_video').fadeIn(1000);\r\n        }, 1000);\r\n    });\r\n\r\n});\n\n//# sourceURL=webpack:///./js/app/youtube.js?");
 
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************!*\
-  !*** multi ./js/app/app.js ./js/app/sliders.js ./js/app/stars.js ./js/app/whell.js ***!
-  \*************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** multi ./js/app/app.js ./js/app/mouse_parallax.js ./js/app/sliders.js ./js/app/stars.js ./js/app/whell.js ./js/app/youtube.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./js/app/app.js */\"./js/app/app.js\");\n__webpack_require__(/*! ./js/app/sliders.js */\"./js/app/sliders.js\");\n__webpack_require__(/*! ./js/app/stars.js */\"./js/app/stars.js\");\nmodule.exports = __webpack_require__(/*! ./js/app/whell.js */\"./js/app/whell.js\");\n\n\n//# sourceURL=webpack:///multi_./js/app/app.js_./js/app/sliders.js_./js/app/stars.js_./js/app/whell.js?");
+eval("__webpack_require__(/*! ./js/app/app.js */\"./js/app/app.js\");\n__webpack_require__(/*! ./js/app/mouse_parallax.js */\"./js/app/mouse_parallax.js\");\n__webpack_require__(/*! ./js/app/sliders.js */\"./js/app/sliders.js\");\n__webpack_require__(/*! ./js/app/stars.js */\"./js/app/stars.js\");\n__webpack_require__(/*! ./js/app/whell.js */\"./js/app/whell.js\");\nmodule.exports = __webpack_require__(/*! ./js/app/youtube.js */\"./js/app/youtube.js\");\n\n\n//# sourceURL=webpack:///multi_./js/app/app.js_./js/app/mouse_parallax.js_./js/app/sliders.js_./js/app/stars.js_./js/app/whell.js_./js/app/youtube.js?");
 
 /***/ })
 

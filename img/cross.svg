@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11.5" height="11.5" viewBox="0 0 11.5 11.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #c3002f;
+      }
+    </style>
+  </defs>
+  <title>Ресурс 4</title>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="work">
+      <g>
+        <circle class="cls-1" cx="5.75" cy="5.75" r="4.56"/>
+        <path class="cls-2" d="M0,2.46V9A2.46,2.46,0,0,0,2.46,11.5H9A2.46,2.46,0,0,0,11.5,9V2.46A2.46,2.46,0,0,0,9,0H2.46A2.46,2.46,0,0,0,0,2.46ZM9.34,6.83H6.83V9.34H4.67V6.83H2.16V4.67H4.67V2.16H6.83V4.67H9.34Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
