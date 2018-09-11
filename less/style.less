@@ -330,11 +330,11 @@ body {
             }
 
             &::before {
-                top: -10px;
+                top: -9px;
             }
 
             &::after {
-                bottom: -10px;
+                bottom: -9px;
             }
         }
     }
@@ -368,6 +368,9 @@ body {
 }
 
 .page_1 {
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -419,7 +422,9 @@ body {
 }
 
 .page_2 {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -472,7 +477,9 @@ body {
 }
 
 .page_3 {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -510,7 +517,7 @@ body {
             left: 0;
             z-index: -1;
             height: 100%;
-            transition: .3s;
+            transition: .5s ease-in-out;
         }
 
         &_button {
@@ -545,7 +552,9 @@ body {
 }
 
 .page_4 {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -563,11 +572,34 @@ body {
             }
         }
 
-        .diagram {
+        .diagramm {
             position: relative;
             width: 50%;
+            .parallax_wrap {
+                z-index: 5;
+                position: relative;
+                height: 100%;
+                .parallax_block {
+                    height: 100%;
+                }
+            }
 
             .dot {
+                z-index: 2;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #fff;
+                box-shadow: 0 0 25px #fff;
+                transition: 1.5s ease-in-out;
+            }
+
+            .logo_img {
+                z-index: 3;
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -575,14 +607,106 @@ body {
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
-                background-color: #fff;
+                transition: 1.5s ease-in-out;
+
+                &_path {
+                    fill: #fff;
+                }
+            }
+
+            .diagramm_circle {
+                z-index: 1;
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 30px;
+                width: 450px;
+                fill: none;
+                stroke: #fff;
+                stroke-width: 3.6px;
+
+                line {
+                    stroke-miterlimit: 10;
+                }
+
+                path {
+                    stroke-linejoin: round;
+                }
+            }
+
+            .diagramm_gradient {
+                stroke: url(#diagramm_gradient);
+
+                .line_1 {
+                    stroke: #b40a7b;
+                }
+
+                .line_2 {
+                    stroke: #e10666;
+                }
+
+                .line_3 {
+                    stroke: #e11928;
+                }
+
+                .line_4 {
+                    stroke: #ea551a;
+                }
+
+                .line_5 {
+                    stroke: #f28c10;
+                }
+
+                .line_6 {
+                    stroke: #fee201;
+                }
+
+                .line_7 {
+                    stroke: #94c21a;
+                }
+
+                .line_8 {
+                    stroke: #0c943c;
+                }
+
+                .line_9 {
+                    stroke: #00967d;
+                }
+
+                .line_10 {
+                    stroke: #009bb3;
+                }
+
+                .line_11 {
+                    stroke: #194998;
+                }
+
+                .line_12 {
+                    stroke: #412381;
+                }
+
+                .line_13 {
+                    stroke: #671b7f;
+                }
+
+                .line_14 {
+                    stroke: #ec6717;
+                }
+
+                .line_15 {
+                    stroke: #009049;
+                }
             }
         }
     }
 }
 
 .page_5 {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
 
     &_background {
         position: relative;
@@ -646,7 +770,9 @@ body {
 }
 
 .page_6 {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -679,28 +805,38 @@ body {
                 background-color: #b1b3b4;
             }
         }
+
         .underline_button {
             margin-bottom: 50px;
             display: inline-block;
             font-size: 1.5rem;
         }
+
         &_links {
             margin-top: 100px;
+
             .link {
                 color: #B1B3B4;
                 font-size: 1.15rem;
                 font-family: ProximaNova-Semibold;
                 text-transform: uppercase;
                 transition: .5s ease-in-out;
+
                 &:hover {
                     color: #fff;
                 }
+
                 &:first-child {
                     margin-right: 200px;
                 }
             }
         }
     }
+}
+
+.active_page {
+    visibility: visible;
+    opacity: 1;
 }
 
 @import "media";
