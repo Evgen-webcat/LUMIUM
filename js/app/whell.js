@@ -4,6 +4,9 @@ $(document).ready(function () {
     var currentPage = 0;
     var page = $('.page');
     var vivus;
+    var parallaxDiagramm;
+    var parallaxLogo;
+    var animation = true;
 
     function bindWheel() {
         $(window).bind('mousewheel', function (event) {
@@ -42,14 +45,23 @@ $(document).ready(function () {
         } else {
             $('.mouse').removeClass('mouse-white');
         }
-        if (currentPage == 3) {
-            pageAnimation();
-        } else {
+        if (currentPage == 3 && animation == true) {
+            $(window).unbind('mousewheel');
 
+            pageAnimation();
+
+            setTimeout(function () {
+                $(window).bind('mousewheel', function (event) {
+                    event.preventDefault();
+                    $(window).unbind('mousewheel');
+                    pageAnimationReverse();
+                });
+            }, 7000);
+        } else {
+            setTimeout(function () {
+                bindWheel();
+            }, 1000);
         }
-        setTimeout(function () {
-            bindWheel();
-        }, 1000);
     }
 
     function nextPage() {
@@ -87,10 +99,53 @@ $(document).ready(function () {
         }, 2500);
         setTimeout(function () {
             $("#diagramm").addClass('diagramm_gradient');
+        }, 6000);
+        setTimeout(function () {
+            $(".aroma").css('opacity', '1');
+        }, 6500);
+        setTimeout(function () {
             var diagramm = document.getElementById('g7390');
             var logo_block = document.getElementById('logo_block');
-            var parallax_img = new Parallax(diagramm);
-            var parallax_img = new Parallax(logo_block);
-        }, 6000);
+            parallaxDiagramm = new Parallax(diagramm, {
+                relativeInput: true,
+                hoverOnly: true
+            });
+            parallaxLogo = new Parallax(logo_block, {
+                relativeInput: true,
+                hoverOnly: true
+            });
+        }, 7500);
     };
+
+    function pageAnimationReverse() {
+        parallaxDiagramm.destroy();
+        parallaxLogo.destroy();
+        $(".aroma").css('opacity', '0');
+        setTimeout(function () {
+            $("#diagramm").removeClass('diagramm_gradient');
+        }, 2000);
+        setTimeout(function () {
+            vivus.play(-1);
+        }, 3000);
+        setTimeout(function () {
+            $('.text_1').fadeOut(1000);
+            $('.text_2').delay(1000).fadeIn();
+        }, 4000);
+        setTimeout(function () {
+             $('.dot').css({
+                'width': '15px',
+                'height': '15px',
+                'background-color': '#fff'
+            });
+            $('.logo_img').css({
+                'width': '15px',
+                'height': '15px',
+                'box-shadow': 'none'
+            });
+        }, 7000);
+        setTimeout(function () {
+            animation = false;
+            bindWheel();
+        }, 9000);
+    }
 });

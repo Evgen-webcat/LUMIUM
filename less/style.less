@@ -563,6 +563,7 @@ body {
         padding: 0 10%;
         box-sizing: border-box;
         display: flex;
+        width: 100%;
 
         .text {
 
@@ -572,13 +573,19 @@ body {
             }
         }
 
+        .text_2 {
+            display: none;
+        }
+
         .diagramm {
             position: relative;
             width: 50%;
+
             .parallax_wrap {
                 z-index: 5;
                 position: relative;
                 height: 100%;
+
                 .parallax_block {
                     height: 100%;
                 }
@@ -614,89 +621,147 @@ body {
                 }
             }
 
-            .diagramm_circle {
+            .circle {
                 z-index: 1;
-                display: none;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                padding: 30px;
-                width: 450px;
-                fill: none;
-                stroke: #fff;
-                stroke-width: 3.6px;
 
-                line {
-                    stroke-miterlimit: 10;
+                .aroma {
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    box-shadow: 0 0 25px #fff;
+                    transition: 1.5s ease-in-out;
+                    cursor: pointer;
+                    animation: aroma 5s infinite;
+                    opacity: 0;
+                    transition: 1.5s ease-in-out;
                 }
 
-                path {
-                    stroke-linejoin: round;
-                }
-            }
-
-            .diagramm_gradient {
-                stroke: url(#diagramm_gradient);
-
-                .line_1 {
-                    stroke: #b40a7b;
+                .aroma_1 {
+                    top: 250px;
+                    left: 26px;
                 }
 
-                .line_2 {
-                    stroke: #e10666;
+                .aroma_2 {
+                    top: 230px;
+                    left: 120px;
+                    animation-delay: 1.2s;
                 }
 
-                .line_3 {
-                    stroke: #e11928;
+                .aroma_3 {
+                    bottom: 50px;
+                    left: 150px;
+                    animation-delay: 3s;
                 }
 
-                .line_4 {
-                    stroke: #ea551a;
+                .aroma_4 {
+                    top: 29px;
+                    right: 215px;
+                    animation-delay: .7s;
                 }
 
-                .line_5 {
-                    stroke: #f28c10;
+                .aroma_5 {
+                    top: 230px;
+                    right: 120px;
+                    animation-delay: 4.3s;
                 }
 
-                .line_6 {
-                    stroke: #fee201;
+                .aroma_6 {
+                    bottom: 150px;
+                    right: 50px;
+                    animation-delay: 1.1s;
                 }
 
-                .line_7 {
-                    stroke: #94c21a;
+                .aroma_7 {
+                    top: 250px;
+                    right: 26px;
+                    animation-delay: 3.9s;
                 }
 
-                .line_8 {
-                    stroke: #0c943c;
+                .diagramm_circle {
+                    display: none;
+                    padding: 30px;
+                    width: 450px;
+                    fill: none;
+                    stroke: #fff;
+                    stroke-width: 3.6px;
+
+                    line {
+                        stroke-miterlimit: 10;
+                    }
+
+                    path {
+                        stroke-linejoin: round;
+                    }
                 }
 
-                .line_9 {
-                    stroke: #00967d;
-                }
+                .diagramm_gradient {
+                    stroke: url(#diagramm_gradient);
 
-                .line_10 {
-                    stroke: #009bb3;
-                }
+                    .line_1 {
+                        stroke: #b40a7b;
+                    }
 
-                .line_11 {
-                    stroke: #194998;
-                }
+                    .line_2 {
+                        stroke: #e10666;
+                    }
 
-                .line_12 {
-                    stroke: #412381;
-                }
+                    .line_3 {
+                        stroke: #e11928;
+                    }
 
-                .line_13 {
-                    stroke: #671b7f;
-                }
+                    .line_4 {
+                        stroke: #ea551a;
+                    }
 
-                .line_14 {
-                    stroke: #ec6717;
-                }
+                    .line_5 {
+                        stroke: #f28c10;
+                    }
 
-                .line_15 {
-                    stroke: #009049;
+                    .line_6 {
+                        stroke: #fee201;
+                    }
+
+                    .line_7 {
+                        stroke: #94c21a;
+                    }
+
+                    .line_8 {
+                        stroke: #0c943c;
+                    }
+
+                    .line_9 {
+                        stroke: #00967d;
+                    }
+
+                    .line_10 {
+                        stroke: #009bb3;
+                    }
+
+                    .line_11 {
+                        stroke: #194998;
+                    }
+
+                    .line_12 {
+                        stroke: #412381;
+                    }
+
+                    .line_13 {
+                        stroke: #671b7f;
+                    }
+
+                    .line_14 {
+                        stroke: #ec6717;
+                    }
+
+                    .line_15 {
+                        stroke: #009049;
+                    }
                 }
             }
         }
