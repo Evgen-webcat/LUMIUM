@@ -3,6 +3,8 @@
 @import "fonts";
 @import "color";
 @import "anim";
+@import "rangeSlider";
+@import "rangeSliderSkin";
 
 html {
     font-size: 20px;
@@ -910,7 +912,9 @@ body {
 
     &_block {
         .single_product {
+            display: none;
             text-align: center;
+            cursor: pointer;
 
             &_img {
                 width: 550px;
@@ -932,32 +936,41 @@ body {
             }
 
             &_info {
-                &_list {
-                    &_caption {}
+                display: none;
 
-                    &_paragraph {}
+                &_list {
+                    display: flex;
+                    justify-content: center;
+
+                    &_caption {
+                        text-transform: uppercase;
+                    }
                 }
 
-                &_botton {}
+                &_button {
+                    margin-top: 20px;
+                    display: inline-block;
+                }
             }
         }
     }
+
     .range {
         position: relative;
-        margin: 20px auto 0;
+        margin: 0 auto;
         width: 55%;
-        height: 3px;
-        background-image: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
-        &_point {
+        height: 75px;
+
+        &::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #fff;
-            cursor: pointer;
+            top: 33px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: ~"calc(100% + 40px)";
+            height: 3px;
+            background: #EEE;
+            background: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
         }
     }
 }
@@ -965,6 +978,115 @@ body {
 .active_page {
     visibility: visible;
     opacity: 1;
+}
+
+.contact-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+
+    &_caption {
+        position: absolute;
+        top: 0;
+        left: -300px;
+        font-size: 2.55rem;
+        font-family: ProximaNova-Bold;
+    }
+
+    .company_caption {
+        font-size: 1.65rem;
+        font-family: ProximaNova-Bold;
+        line-height: 3rem;
+
+        &_part {
+            font-family: ProximaNova;
+            text-transform: uppercase;
+        }
+    }
+
+    .form_email {
+        margin: 50px 0 20px;
+        font-size: 2.05rem;
+        font-family: ProximaNova-Bold;
+    }
+
+    .contact_form {
+
+        &_subject,
+        &_firstname,
+        &_lastname,
+        &_email,
+        &_phone {
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            color: #B1B3B4;
+            font-size: 1rem;
+            font-family: ProximaNova-Semibold;
+            text-transform: uppercase;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #B1B3B4;
+            background: none;
+            backface-visibility: hidden;
+        }
+
+        &_firstname,
+        &_lastname {
+            width: 49%;
+        }
+
+        &_lastname {
+            float: right;
+        }
+
+        &_subject::placeholder,
+        &_firstname::placeholder,
+        &_lastname::placeholder,
+        &_email::placeholder,
+        &_phone::placeholder {
+            color: #B1B3B4;
+        }
+
+        &_message {
+            padding: 10px;
+            box-sizing: border-box;
+            width: 100%;
+            color: #B1B3B4;
+            font-size: .9rem;
+            font-family: ProximaNova;
+            text-transform: uppercase;
+            outline: none;
+            border: none;
+            resize: none;
+            background: linear-gradient(to right, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+        }
+
+        &_message::placeholder {
+            color: #B1B3B4;
+        }
+
+        .submit {
+            float: right;
+            margin-top: 10px;
+            border: none;
+            outline: none;
+            background: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.contact_footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-image: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
 }
 
 @import "media";

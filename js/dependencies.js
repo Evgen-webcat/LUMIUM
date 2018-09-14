@@ -2,4 +2,4 @@ window.jQuery = window.$ = require('jquery');
 require('slick-carousel');
 window.Vivus = require('vivus');
 window.Parallax = require('parallax-js');
-require('rangeslider.js');
+require('ion-rangeslider');
