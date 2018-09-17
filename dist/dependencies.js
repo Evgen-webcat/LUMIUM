@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("window.jQuery = window.$ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n__webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\nwindow.Vivus = __webpack_require__(/*! vivus */ \"./node_modules/vivus/dist/vivus.js\");\nwindow.Parallax = __webpack_require__(/*! parallax-js */ \"./node_modules/parallax-js/dist/parallax.js\");\n__webpack_require__(/*! ion-rangeslider */ \"./node_modules/ion-rangeslider/js/ion.rangeSlider.js\");\n\n\n//# sourceURL=webpack:///./js/dependencies.js?");
+eval("window.jQuery = window.$ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n__webpack_require__(/*! slick-carousel */ \"./node_modules/slick-carousel/slick/slick.js\");\nwindow.Vivus = __webpack_require__(/*! vivus */ \"./node_modules/vivus/dist/vivus.js\");\nwindow.Parallax = __webpack_require__(/*! parallax-js */ \"./node_modules/parallax-js/dist/parallax.js\");\n__webpack_require__(/*! ion-rangeslider */ \"./node_modules/ion-rangeslider/js/ion.rangeSlider.js\");\n\n//# sourceURL=webpack:///./js/dependencies.js?");
 
 /***/ }),
 

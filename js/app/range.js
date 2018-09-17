@@ -1,16 +1,12 @@
 $(document).ready(function () {
+    'use strict';
+
+    var productPage = document.getElementById('productPage');
     var currentValue = 0;
     var currentSlide = 0;
+    var productQuantity = $('.single_product').length - 1;
 
     $('.single_product').eq(0).fadeIn('fast');
-
-    $('.single_product').click(function () {
-        var $name = $(this).children('.single_product_name');
-        var $info = $(this).children('.single_product_info');
-
-        $name.fadeOut(500);
-        $info.delay(500).fadeIn(500);
-    });
 
     $('.range_slider').ionRangeSlider({
         grid: true,
@@ -26,23 +22,29 @@ $(document).ready(function () {
     ],
         onChange: function (data) {
             var value = data.from;
-            toggleProduct (value);
+            toggleProduct(value);
         },
         onUpdate: function (data) {
             var value = data.from;
-            toggleProduct (value);
+            toggleProduct(value);
         }
     });
     var slider = $('.range_slider').data('ionRangeSlider');
 
-    $(window).bind('mousewheel', function (event) {
-        event.preventDefault();
-        updateSlider(event);
-    });
+    function rangeWheel () {
+        if (productPage) {
+            $(window).bind('mousewheel', function (event) {
+                event.preventDefault();
+                updateSlider(event);
+            });
+        }
+    };
+
+    rangeWheel ();
 
     function updateSlider(event) {
         if (event.originalEvent.wheelDelta / 120 < 0) {
-            if (currentValue != 6) {
+            if (currentValue != productQuantity) {
                 slider.update({
                     from: ++currentSlide
                 });
@@ -56,11 +58,9 @@ $(document).ready(function () {
         }
     };
 
-    function toggleProduct (value) {
-        $('.single_product').eq(currentValue).fadeOut(500);
-        setTimeout(function () {
-            $('.single_product').eq(value).fadeIn(500);
-        }, 500);
+    function toggleProduct(value) {
+        $('.single_product').eq(currentValue).delay(250).fadeOut(750);
+            $('.single_product').eq(value).fadeIn(750);
         currentValue = value;
     }
 

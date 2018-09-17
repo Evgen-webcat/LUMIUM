@@ -33,7 +33,7 @@
         </div>
         <a href="#" class="menu-button"><span class="burger"></span></a>
     </header>
-    <main class="main">
+    <main class="main" id="mainPage">
         <section class="page page_1 active_page">
             <div class="page_1_content">
                 <div class="text">
@@ -42,7 +42,7 @@
                     <h3 class="text_tagline">Tune your vibration</h3>
                     <p class="text_caption">Продукт связывающий вибрацию цвета и аромат.</p>
                     <p class="text_paragraph">Брэнд-икона нового поколения, Armand Lumier, представляет начальную линейку ароматов, соответствующей основной гамме видимого спектра, с возможностью расширения в дальнейшем.</p>
-                    <a href="#" class="button">products</a>
+                    <a href="pages/products.html" class="button">products</a>
                 </div>
                 <div class="product_slider">
                     <div class="product_slider_slide">
@@ -174,7 +174,9 @@
                 </div>
             </div>
             <div class="youtube_video">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2xCn8KL_rPE?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div id="player"></div>
+<!--                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2xCn8KL_rPE?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+                <div class="youtube_video_locker"></div>
             </div>
         </section>
         <section class="page page_4">
@@ -203,27 +205,32 @@
                         </div>
                     </div>
                     <div class="circle">
-                        <div class="aroma aroma_1"></div>
-                        <div class="aroma aroma_2"></div>
-                        <div class="aroma aroma_3"></div>
-                        <div class="aroma aroma_4"></div>
-                        <div class="aroma aroma_5"></div>
-                        <div class="aroma aroma_6"></div>
-                        <div class="aroma aroma_7"></div>
+                        <div class="aroma_wrap" id="aroma_wrap">
+                            <div class="aroma_block" data-depth="0.1">
+                                <div class="aroma aroma_1"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.2">
+                                <div class="aroma aroma_2"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.1">
+                                <div class="aroma aroma_3"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.1">
+                                <div class="aroma aroma_4"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.2">
+                                <div class="aroma aroma_5"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.1">
+                                <div class="aroma aroma_6"></div>
+                            </div>
+                            <div class="aroma_block" data-depth="0.1">
+                                <div class="aroma aroma_7"></div>
+                            </div>
+                        </div>
                         <svg class="diagramm_circle" id="diagramm" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1063.76 1063.76">
-                            <defs>
-                                <linearGradient id="diagramm_gradient" x1="0" y1="30%" x2="70%" y2="70%" style="stop-opacity:1">
-                                    <stop offset="0%" style="stop-color:rgb(0,159,215);stop-opacity:1" />
-                                    <stop offset="18%" style="stop-color:rgb(0,144,64);stop-opacity:1" />
-                                    <stop offset="34%" style="stop-color:rgb(255,232,0);stop-opacity:1" />
-                                    <stop offset="60%" style="stop-color:rgb(226,27,37);stop-opacity:1" />
-                                    <stop offset="74%" style="stop-color:rgb(225,0,121);stop-opacity:1" />
-                                    <stop offset="89%" style="stop-color:rgb(34,43,131);stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:rgb(0,159,215);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
                             <g id="g7390">
-                                <g id="circle_lines" data-name="circle lines" data-depth="0.1">
+                                <g id="circle_lines" data-name="circle lines">
                                     <g id="path5561">
                                         <line class="line_1" x1="623.37" y1="875.05" x2="669.39" y2="1043.35" />
                                     </g>
@@ -261,27 +268,38 @@
                                         <line class="line_12" x1="439.53" y1="874.82" x2="395.23" y2="1043.58" />
                                     </g>
                                 </g>
-                                <g id="line" data-name="line" data-depth="0.4">
+                                <g id="line" data-name="line">
                                     <line class="line_13" x1="531.73" y1="531.73" x2="531.73" y2="707.83" />
                                 </g>
-                                <g id="line-2" data-name="line" data-depth="0.4">
+                                <g id="line-2" data-name="line">
                                     <line class="line_14" x1="531.71" y1="532.02" x2="684.22" y2="443.96" />
                                 </g>
-                                <g id="line-3" data-name="line" data-depth="0.4">
+                                <g id="line-3" data-name="line">
                                     <line class="line_15" x1="531.97" y1="531.89" x2="379.46" y2="443.83" />
                                 </g>
-                                <g data-depth="0.4">
+                                <g>
                                     <path id="trianlge" class="trianlge" d="M1122.05,2266.69L1428.27,1737l306.6,529.49-612.82.22h0Z" transform="translate(-896.52 -1558.14)" />
                                 </g>
-                                <g data-depth="0.2">
+                                <g>
                                     <path id="hexagon" class="hexagon" d="M1121.29,2267.32V1912.71l307.1-177.31,307.1,177.31v354.61l-307.1,177.31-307.1-177.31h0Z" transform="translate(-896.52 -1558.14)" />
                                 </g>
-                                <g id="circles" data-depth="0.1">
+                                <g id="circles">
                                     <circle class="circle_1" cx="1428.4" cy="2090.02" r="355.21" transform="translate(-1635.55 -776.08) rotate(-24.54)" />
                                     <circle class="circle_2" cx="1428.4" cy="2090.02" r="529.95" transform="translate(-1635.55 -776.08) rotate(-24.54)" />
                                 </g>
                             </g>
                         </svg>
+                        <div class="parallax_img_wrap" id="parallax_img_wrap">
+                            <div class="parallax_img_block" data-depth="0.1">
+                                <img src="img/diagramm.png" alt="parallax_img" class="parallax_img parallax_img1">
+                            </div>
+                            <div class="parallax_img_block" data-depth="0.2">
+                                <img src="img/diagramm_2.png" alt="parallax_img" class="parallax_img parallax_img2">
+                            </div>
+                            <div class="parallax_img_block" data-depth="0.3">
+                                <img src="img/diagramm_3.png" alt="parallax_img" class="parallax_img parallax_img3">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

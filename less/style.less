@@ -271,6 +271,7 @@ body {
     bottom: 30px;
     transform: translateX(-50%);
     height: 30px;
+    fill: transparent;
     stroke: #707173;
     transition: .5s ease-in-out;
 }
@@ -549,6 +550,14 @@ body {
         width: 100%;
         height: 100%;
         overflow: hidden;
+        &_locker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: url(/img/cross.cur), auto;
+        }
     }
 }
 
@@ -565,6 +574,8 @@ body {
         box-sizing: border-box;
         display: flex;
         width: 100%;
+        height: 510px;
+        overflow: hidden;
 
         .text {
 
@@ -628,6 +639,23 @@ body {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+
+                .aroma_wrap {
+                    z-index: 7;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 510px;
+
+                    .aroma_block {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
 
                 .aroma {
                     position: absolute;
@@ -700,68 +728,43 @@ body {
                         stroke-linejoin: round;
                     }
                 }
+            }
 
-                .diagramm_gradient {
-                    stroke: url(#diagramm_gradient);
+            .parallax_img_wrap {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: .5s ease-in-out;
+                overflow: hidden;
 
-                    .line_1 {
-                        stroke: #b40a7b;
+                .parallax_img_block {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    .parallax_img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
                     }
 
-                    .line_2 {
-                        stroke: #e10666;
+                    .parallax_img1 {
+                        width: 464px;
                     }
 
-                    .line_3 {
-                        stroke: #e11928;
+                    .parallax_img2 {
+                        width: 275px;
                     }
 
-                    .line_4 {
-                        stroke: #ea551a;
-                    }
-
-                    .line_5 {
-                        stroke: #f28c10;
-                    }
-
-                    .line_6 {
-                        stroke: #fee201;
-                    }
-
-                    .line_7 {
-                        stroke: #94c21a;
-                    }
-
-                    .line_8 {
-                        stroke: #0c943c;
-                    }
-
-                    .line_9 {
-                        stroke: #00967d;
-                    }
-
-                    .line_10 {
-                        stroke: #009bb3;
-                    }
-
-                    .line_11 {
-                        stroke: #194998;
-                    }
-
-                    .line_12 {
-                        stroke: #412381;
-                    }
-
-                    .line_13 {
-                        stroke: #671b7f;
-                    }
-
-                    .line_14 {
-                        stroke: #ec6717;
-                    }
-
-                    .line_15 {
-                        stroke: #009049;
+                    .parallax_img3 {
+                        top: 220px;
+                        width: 273px;
                     }
                 }
             }
@@ -911,16 +914,43 @@ body {
     width: 100vw;
 
     &_block {
+        position: relative;
+        height: 550px;
+
         .single_product {
             display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             cursor: pointer;
+
+            &_wrap {
+                display: inline-block;
+
+                &:hover {
+                    .single_product_name {
+                        opacity: 0;
+                    }
+
+                    .single_product_info {
+                        opacity: 1;
+                    }
+                }
+            }
 
             &_img {
                 width: 550px;
             }
 
             &_name {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 1;
+                transition: .5s ease-in-out;
+
                 &_caption {
                     font-size: 2.25rem;
                     font-family: ProximaNova-Bold;
@@ -936,7 +966,8 @@ body {
             }
 
             &_info {
-                display: none;
+                opacity: 0;
+                transition: .5s ease-in-out;
 
                 &_list {
                     display: flex;
@@ -953,6 +984,12 @@ body {
                 }
             }
         }
+    }
+
+    .buynow {
+        position: absolute;
+        top: 35%;
+        right: 10%;
     }
 
     .range {

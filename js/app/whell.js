@@ -1,18 +1,22 @@
 $(document).ready(function () {
     'use strict';
 
+    var mainPage = document.getElementById('mainPage');
     var currentPage = 0;
     var page = $('.page');
     var vivus;
     var parallaxDiagramm;
     var parallaxLogo;
+    var parallaxAroma;
     var animation = true;
 
     function bindWheel() {
+        if (mainPage) {
         $(window).bind('mousewheel', function (event) {
             event.preventDefault();
             wheel(event);
         });
+    }
     }
 
     bindWheel();
@@ -98,19 +102,25 @@ $(document).ready(function () {
             vivus.play();
         }, 2500);
         setTimeout(function () {
-            $("#diagramm").addClass('diagramm_gradient');
-        }, 6000);
-        setTimeout(function () {
-            $(".aroma").css('opacity', '1');
+            $(".parallax_img_wrap").css('opacity', '1');
         }, 6500);
         setTimeout(function () {
-            var diagramm = document.getElementById('g7390');
+            $(".aroma").css('opacity', '1');
+            $(".diagramm_circle").css('opacity', '0');
+        }, 7000);
+        setTimeout(function () {
+            var diagramm = document.getElementById('parallax_img_wrap');
             var logo_block = document.getElementById('logo_block');
+            var aroma = document.getElementById('aroma_wrap');
             parallaxDiagramm = new Parallax(diagramm, {
                 relativeInput: true,
                 hoverOnly: true
             });
             parallaxLogo = new Parallax(logo_block, {
+                relativeInput: true,
+                hoverOnly: true
+            });
+            parallaxAroma = new Parallax(aroma, {
                 relativeInput: true,
                 hoverOnly: true
             });
@@ -120,7 +130,10 @@ $(document).ready(function () {
     function pageAnimationReverse() {
         parallaxDiagramm.destroy();
         parallaxLogo.destroy();
+        parallaxAroma.destroy();
         $(".aroma").css('opacity', '0');
+            $(".diagramm_circle").css('opacity', '1');
+            $(".parallax_img_wrap").css('opacity', '0');
         setTimeout(function () {
             $("#diagramm").removeClass('diagramm_gradient');
         }, 2000);
