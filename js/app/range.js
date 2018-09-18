@@ -20,7 +20,10 @@ $(document).ready(function () {
         "610", "650",
         "700"
     ],
-        onChange: function (data) {
+        onStart: function () {
+            $('.irs-grid-text').eq(0).addClass('irs-grid-text-active')
+        },
+        onFinish: function (data) {
             var value = data.from;
             toggleProduct(value);
         },
@@ -31,18 +34,23 @@ $(document).ready(function () {
     });
     var slider = $('.range_slider').data('ionRangeSlider');
 
-    function rangeWheel () {
+    function rangeWheel() {
         if (productPage) {
-            $(window).bind('mousewheel', function (event) {
-                event.preventDefault();
-                updateSlider(event);
-            });
+            bindMousewheel();
         }
     };
 
-    rangeWheel ();
+    rangeWheel();
+
+    function bindMousewheel() {
+        $(window).bind('mousewheel', function (event) {
+            event.preventDefault();
+            updateSlider(event);
+        });
+    };
 
     function updateSlider(event) {
+        $(window).unbind('mousewheel');
         if (event.originalEvent.wheelDelta / 120 < 0) {
             if (currentValue != productQuantity) {
                 slider.update({
@@ -56,12 +64,36 @@ $(document).ready(function () {
                 });
             }
         }
+        setTimeout(function () {
+            bindMousewheel();
+        }, 1000);
     };
 
     function toggleProduct(value) {
         $('.single_product').eq(currentValue).delay(250).fadeOut(750);
-            $('.single_product').eq(value).fadeIn(750);
+        $('.single_product').eq(value).fadeIn(750);
+        $('.irs-grid-text-active').removeClass('irs-grid-text-active');
+        $('.irs-grid-text').eq(value).addClass('irs-grid-text-active');
         currentValue = value;
+        currentSlide = value;
     }
 
+    $('.single_product').click(function () {
+        $('.active_page').removeClass('active_page');
+        setTimeout(function () {
+            $('.product-details').eq(currentValue).addClass('active_page');
+        $('.mouse_block').css({
+            visibility: 'visible',
+            opacity: '1'
+        });
+            $(window).bind('mousewheel', singleProductScroll);
+        }, 500);
+    });
+
+    function singleProductScroll (event) {
+        $(window).unbind('mousewheel');
+             if (event.originalEvent.wheelDelta / 120 < 0) {
+
+             };
+    };
 });

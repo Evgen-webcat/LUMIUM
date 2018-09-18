@@ -103,10 +103,10 @@ $(document).ready(function () {
         }, 2500);
         setTimeout(function () {
             $(".parallax_img_wrap").css('opacity', '1');
+            $(".diagramm_circle").animate({opacity: 0}, 500);
         }, 6500);
         setTimeout(function () {
             $(".aroma").css('opacity', '1');
-            $(".diagramm_circle").css('opacity', '0');
         }, 7000);
         setTimeout(function () {
             var diagramm = document.getElementById('parallax_img_wrap');
@@ -132,7 +132,7 @@ $(document).ready(function () {
         parallaxLogo.destroy();
         parallaxAroma.destroy();
         $(".aroma").css('opacity', '0');
-            $(".diagramm_circle").css('opacity', '1');
+            $(".diagramm_circle").animate({opacity: 1}, 500);
             $(".parallax_img_wrap").css('opacity', '0');
         setTimeout(function () {
             $("#diagramm").removeClass('diagramm_gradient');

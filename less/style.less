@@ -55,6 +55,7 @@ body {
         transform: translate(-50%, -50%);
         border-radius: 50%;
         background-color: rgba(99, 99, 99, .7);
+        background-image: linear-gradient(to right, #4e4f50, #717272);
         transition: .5s ease-in-out;
     }
 
@@ -71,6 +72,105 @@ body {
         animation: pulse 1s;
         box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     }
+}
+
+.button_red {
+    &::before {
+        background-color: rgba(170, 0, 23, .7);
+        background-image: linear-gradient(to right, #aa0017, #ba3144);
+    }
+    &:hover {
+        border: 1px solid #aa0017;
+    }
+    &.click {
+        animation: pulse_red 1s;
+    }
+}
+
+.button_orange {
+    &::before {
+        background-color: rgba(174, 73, 0, .7);
+        background-image: linear-gradient(to right, #ae4900, #ab622e);
+    }
+    &:hover {
+        border: 1px solid #ae4900;
+    }
+    &.click {
+        animation: pulse_orange 1s;
+    }
+}
+
+.button_yellow {
+    &::before {
+        background-color: rgba(184, 158, 0, .7);
+        background-image: linear-gradient(to right, #b89e00, #a5942c);
+    }
+    &:hover {
+        border: 1px solid #b89e00;
+    }
+    &.click {
+        animation: pulse_yellow 1s;
+    }
+}
+
+.button_green {
+    &::before {
+        background-color: rgba(0, 111, 88, .7);
+        background-image: linear-gradient(to right, #006f58, #237b69);
+    }
+    &:hover {
+        border: 1px solid #006f58;
+    }
+    &.click {
+        animation: pulse_green 1s;
+    }
+}
+
+.button_blue_light {
+    &::before {
+        background-color: rgba(0, 114, 156, .7);
+        background-image: linear-gradient(to right, #00729c, #337993);
+    }
+    &:hover {
+        border: 1px solid #00729c;
+    }
+    &.click {
+        animation: pulse_green 1s;
+    }
+}
+
+.button_blue {
+    &::before {
+        background-color: rgba(64, 47, 169, .7);
+        background-image: linear-gradient(to right, #402fa9, #6557ba);
+    }
+    &:hover {
+        border: 1px solid #402fa9;
+    }
+    &.click {
+        animation: pulse_blue 1s;
+    }
+}
+
+.button_violet {
+    &::before {
+        background-color: rgba(134, 32, 159, .7);
+        background-image: linear-gradient(to right, #86209f, #8e43a1);
+    }
+    &:hover {
+        border: 1px solid #86209f;
+    }
+    &.click {
+        animation: pulse_blue 1s;
+    }
+}
+
+.irs-grid-text {
+    transition: color .5s ease-in-out;
+}
+
+.irs-grid-text-active {
+    color: #fff;
 }
 
 .preloader {
@@ -278,6 +378,30 @@ body {
 
 .mouse-white {
     stroke: #fff;
+}
+
+.mouse_block {
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
+
+    &_icon {
+        position: absolute;
+        left: 5%;
+        bottom: 70px;
+        height: 30px;
+        fill: transparent;
+        stroke: #707173;
+    }
+    &_text {
+         position: absolute;
+        left: 10%;
+        bottom: 80px;
+        font-size: 1.15rem;
+        font-family: ProximaNova-Semibold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 }
 
 .header {
@@ -550,6 +674,7 @@ body {
         width: 100%;
         height: 100%;
         overflow: hidden;
+
         &_locker {
             position: fixed;
             top: 0;
@@ -1009,6 +1134,66 @@ body {
             background: #EEE;
             background: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
         }
+    }
+}
+
+.product-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s ease-in-out;
+    padding: 0 10%;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    transition: .5s ease-in-out;
+    &_text {
+        width: 40%;
+        padding: 150px 0;
+        &_caption {
+            margin-bottom: 30px;
+            font-size: 4.2rem;
+            font-family: ProximaNova-Bold;
+            .sup {
+                font-size: 1.9rem;
+                vertical-align: top;
+            }
+        }
+        .product_notes {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            &_list {
+                margin-bottom: 30px;
+                .text_light {
+                    color: #D9DADB;
+                }
+            }
+        }
+    }
+    &_imgs {
+        width: 60%;
+        .product-details_img {
+            float: left;
+            width: 50%;
+            height: 25vh;
+            object-fit: cover;
+        }
+        .img_vertical {
+            height: 50vh;
+        }
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-image: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
     }
 }
 
