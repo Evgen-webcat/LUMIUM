@@ -2,17 +2,17 @@ $(document).ready(function () {
     'use strict';
 
     var productPage = document.getElementById('productPage');
-    var currentValue = 0;
-    var currentSlide = 0;
+    var currentValue = getCookie('value') || 0;
+    var currentSlide = getCookie('value') || 0;
     var productQuantity = $('.single_product').length - 1;
 
-    $('.single_product').eq(0).fadeIn('fast');
+    $('.single_product').eq(currentValue).fadeIn('fast');
 
     $('.range_slider').ionRangeSlider({
         grid: true,
         min: 1,
         max: 7,
-        from: 0,
+        from: currentValue,
         hide_min_max: true,
         values: [
         "435", "495",
@@ -21,7 +21,7 @@ $(document).ready(function () {
         "700"
     ],
         onStart: function () {
-            $('.irs-grid-text').eq(0).addClass('irs-grid-text-active')
+            $('.irs-grid-text').eq(currentValue).addClass('irs-grid-text-active');
         },
         onFinish: function (data) {
             var value = data.from;
@@ -93,7 +93,11 @@ $(document).ready(function () {
     function singleProductScroll (event) {
         $(window).unbind('mousewheel');
              if (event.originalEvent.wheelDelta / 120 < 0) {
-
+                 $('.product-details_text_part_one').slideUp(500);
+                 $('.product-details_text_part_two').delay(500).slideDown(500);
+                 setTimeout(function () {
+                 $('.product-details_imgs').addClass('next_imgs');
+                 }, 1000);
              };
     };
 });
