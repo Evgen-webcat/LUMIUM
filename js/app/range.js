@@ -5,6 +5,7 @@ $(document).ready(function () {
     var currentValue = getCookie('value') || 0;
     var currentSlide = getCookie('value') || 0;
     var productQuantity = $('.single_product').length - 1;
+    var currentDetails = 0;
 
     $('.single_product').eq(currentValue).fadeIn('fast');
 
@@ -82,22 +83,98 @@ $(document).ready(function () {
         $('.active_page').removeClass('active_page');
         setTimeout(function () {
             $('.product-details').eq(currentValue).addClass('active_page');
-        $('.mouse_block').css({
-            visibility: 'visible',
-            opacity: '1'
-        });
+            $('.mouse_block').css({
+                visibility: 'visible',
+                opacity: '1'
+            });
             $(window).bind('mousewheel', singleProductScroll);
+            $('.mouse_block').bind('click', singleProductClick);
         }, 500);
     });
 
-    function singleProductScroll (event) {
+    function toggleDetails(direction) {
+        if (direction == 'next') {
+            if (currentDetails === 0) {
+                $('.active_page').find('.product-details_text_part_one').slideUp(500);
+                $('.active_page').find('.product-details_text_part_two').delay(500).slideDown(500);
+                $('.active_page').find('.product-details_imgs').addClass('next_imgs');
+                currentDetails++;
+            } else if (currentDetails === 1) {
+                $('.active_page').find('.product-details_imgs').css({
+                    'opacity': '0',
+                    'visibility': 'hidden'
+                });
+                setTimeout(function () {
+                    $('.active_page').find('.product-details_box_img').css({
+                        'opacity': '1',
+                        'visibility': 'visible'
+                    });
+                    $('.active_page').find('.bottle').addClass('active');
+                    $('.active_page').find('.box').addClass('active');
+                }, 500);
+                currentDetails++;
+            } else if (currentDetails === 2) {
+                $('.active_page').addClass('active_page_header');
+                $('.product-details_text, .product-details_box_img').css('transform', 'translateY(-10%)');
+                $('.product-details_footer').css('bottom', '0');
+                $('.mouse_block').css({
+                    visibility: 'hidden',
+                    opacity: '0'
+                });
+                currentDetails++;
+            }
+        } else if (direction == 'prev') {
+            if (currentDetails === 1) {
+                $('.active_page').find('.product-details_text_part_two').slideUp(500);
+                $('.active_page').find('.product-details_text_part_one').delay(500).slideDown(500);
+                $('.active_page').find('.product-details_imgs').removeClass('next_imgs');
+                currentDetails--;
+            } else if (currentDetails === 2) {
+                $('.active_page').find('.product-details_box_img').css({
+                    'opacity': '0',
+                    'visibility': 'hidden'
+                });
+                setTimeout(function () {
+                    $('.active_page').find('.product-details_imgs').css({
+                        'opacity': '1',
+                        'visibility': 'visible'
+                    });
+                    $('.active_page').find('.bottle').removeClass('active');
+                    $('.active_page').find('.box').removeClass('active');
+                }, 500);
+                currentDetails--;
+            } else if (currentDetails === 3) {
+                $('.product-details_text, .product-details_box_img').css('transform', 'translateY(0)');
+                $('.product-details_footer').css('bottom', '-100px');
+                $('.mouse_block').css({
+                    visibility: 'visible',
+                    opacity: '1'
+                });
+                setTimeout(function () {
+                    $('.active_page').removeClass('active_page_header');
+                }, 500);
+                currentDetails--;
+            }
+        }
+    };
+
+    function singleProductClick() {
+        $('mouse_block').unbind('click');
+        toggleDetails('next');
+    };
+
+    function singleProductScroll(event) {
         $(window).unbind('mousewheel');
-             if (event.originalEvent.wheelDelta / 120 < 0) {
-                 $('.product-details_text_part_one').slideUp(500);
-                 $('.product-details_text_part_two').delay(500).slideDown(500);
-                 setTimeout(function () {
-                 $('.product-details_imgs').addClass('next_imgs');
-                 }, 1000);
-             };
+        if (event.originalEvent.wheelDelta / 120 < 0) {
+            toggleDetails('next');
+            setTimeout(function () {
+                $(window).bind('mousewheel', singleProductScroll);
+            }, 1000);
+        } else if (event.originalEvent.wheelDelta / 120 > 0) {
+            toggleDetails('prev');
+            setTimeout(function () {
+                $(window).bind('mousewheel', singleProductScroll);
+            }, 1000);
+        };
     };
 });

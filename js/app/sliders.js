@@ -6,12 +6,10 @@ $(document).ready(function () {
         autoplay: true
     });
 
-    $('.product_slider').slick('setPosition');
-
     $('.products_slider').slick({
         slidesToShow: 3,
-        infinite: false
+		slideToScroll: 1,
+//        infinite: false,
+//		autoplay: true
     });
-
-    $('.products_slider').slick('setPosition');
 });
