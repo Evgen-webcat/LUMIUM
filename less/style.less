@@ -15,6 +15,7 @@ body {
     color: #B1B3B4;
     width: 100%;
     overflow-x: hidden;
+    user-select: none;
 }
 
 .background {
@@ -1101,6 +1102,9 @@ body {
 
                     .single_product_info {
                         opacity: 1;
+                        &_button::before {
+                            transform: scale(1);
+                        }
                     }
                 }
             }
@@ -1146,6 +1150,12 @@ body {
                 &_button {
                     margin-top: 20px;
                     display: inline-block;
+
+                    &::before {
+                        transform: scale(0);
+                        transform-origin: center;
+                        transition: .5s .5s ease-in-out;
+                    }
                 }
             }
         }
@@ -1191,6 +1201,20 @@ body {
     display: flex;
     transition: .5s ease-in-out;
     overflow: hidden;
+    &::before {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 200px;
+        background-image: linear-gradient(to bottom, #000, transparent);
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s ease-in-out;
+    }
 
     &_text {
         width: 40%;
@@ -1231,6 +1255,8 @@ body {
     }
 
     &_imgs {
+        visibility: hidden;
+        opacity: 0;
         width: 60%;
         transition: .5s ease-in-out;
 
@@ -1254,42 +1280,59 @@ body {
         &_block_three_wrap {
             position: absolute;
             height: 100%;
-            transform: translate(0);
             transition: 1.5s ease-in-out;
 
             .product-details_img {
                 float: left;
-                width: 50%;
+                width: 100%;
                 height: 25vh;
                 object-fit: cover;
             }
 
-            .img_vertical {
+            .thumb {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: 1.5s ease-in-out;
+            }
+
+            .vertical_img {
                 height: 50vh;
             }
         }
 
         &_block_one_wrap {
             right: 0;
-            width: 200%;
+            width: 100%;
+
+            .thumb {
+                transform: translateX(-100%);
+            }
         }
 
         &_block_two_wrap {
             bottom: 0;
             width: 100%;
-            height: 200%;
+            height: 100%;
 
-            .product-details_img {
-                width: 100%;
+            .thumb {
+                transform: translateY(-100%);
             }
         }
 
         &_block_three_wrap {
-            height: 200%;
+            height: 100%;
 
-            .bottom_img {
-                width: 100%;
+            .product-details_img {
+                width: 50%;
                 height: 50vh;
+            }
+
+            .thumb {
+                width: 100%;
+                transform: translateY(100%);
             }
         }
     }
@@ -1334,17 +1377,28 @@ body {
         }
     }
 
+    .active {
+        visibility: visible;
+        opacity: 1;
+    }
+
     .next_imgs {
         .product-details_imgs_block_one_wrap {
-            transform: translateX(50.1%);
+            .thumb {
+                transform: translate(0);
+            }
         }
 
         .product-details_imgs_block_two_wrap {
-            transform: translateY(50.1%);
+            .thumb {
+                transform: translate(0);
+            }
         }
 
         .product-details_imgs_block_three_wrap {
-            transform: translateY(-50.1%);
+            .thumb {
+                transform: translate(0);
+            }
         }
     }
 
@@ -1369,6 +1423,8 @@ body {
         left: 0;
         bottom: -100px;
         transition: .5s ease-in-out;
+        cursor: pointer;
+
         &_caption {
             color: #fff;
             font-family: ProximaNova-Semibold;
@@ -1404,15 +1460,8 @@ body {
     opacity: 1;
 
     &_header::before {
-        content: '';
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 200px;
-        background-image: linear-gradient(to bottom, #000, transparent);
+        visibility: visible;
+        opacity: 1;
     }
 }
 
