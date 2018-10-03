@@ -40,7 +40,7 @@ body {
     padding: 15px 30px;
     box-sizing: border-box;
     font-family: ProximaNova-Semibold;
-    color: #9C9E9F;
+    color: @gray;
     letter-spacing: 2px;
     text-transform: uppercase;
     border: 1px solid #B1B3B4;
@@ -200,6 +200,7 @@ body {
     background-color: #000;
 
     &_logo {
+        z-index: 1;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -208,15 +209,36 @@ body {
         height: 120px;
     }
 
-    .radiowaves {
+    .radiowaves_wrap {
+        z-index: -1;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: 100vh;
+        width: 100vw;
+        height: 100vw;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(transparent, #000 40%);
+        }
+
+        .radiowaves {
+            z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100vh;
+        }
     }
 
     &_content {
+        z-index: 1;
         position: absolute;
         bottom: 50px;
         left: 50%;
@@ -224,7 +246,7 @@ body {
         width: 530px;
 
         &_text {
-            color: #9C9E9F;
+            color: @gray;
             text-align: center;
 
             .cookies_button {
@@ -274,7 +296,7 @@ body {
         line-height: 4.8rem;
 
         .menu-link {
-            color: #9C9E9F;
+            color: @gray;
             font-size: 2.95rem;
             text-transform: uppercase;
 
@@ -856,6 +878,31 @@ body {
                     &.violet {
                         stroke: #86209f;
                     }
+                }
+            }
+
+            .waves {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 510px;
+                height: 510px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-image: radial-gradient(transparent, #000 70%);
+                }
+
+                &_img {
+                    width: 100%;
+                    height: 100%;
                 }
             }
 
@@ -1746,37 +1793,119 @@ body {
     background-image: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
 }
 
-.vibes_list {
-    position: relative;
-    margin: 100px 100px 0;
-    width: 20%;
-    height: 80vh;
+.vibes_content {
+    display: flex;
+    padding: 100px 10%;
+    box-sizing: border-box;
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 30px;
+    .vibes_terms {
+        width: 30%;
+
+        &_caption {
+            margin-left: 55px;
+            display: inline;
+            border-bottom: 1px solid #808080;
+            font-family: ProximaNova-Bold;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .vibes_list {
+            position: relative;
+            margin-top: 50px;
+            width: 100%;
+            height: 70vh;
+
+            &_wrap {
+                padding: 30px 0;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                display: block;
+                z-index: 1;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 30px;
+            }
+
+            &::before {
+                top: 0;
+                background-image: linear-gradient(to bottom, #000, transparent);
+            }
+
+            &::after {
+                bottom: 0;
+                background-image: linear-gradient(to top, #000, transparent);
+            }
+
+            .vibes_list_link {
+                display: block;
+                font-size: 1.5rem;
+                color: @gray;
+                font-family: ProximaNova-Light;
+                text-transform: uppercase;
+                transition: .3s ease-in-out;
+
+                &_active {
+                    color: #fff;
+                    font-family: ProximaNova-Bold;
+                }
+            }
+        }
     }
 
-    &::before {
-        top: 0;
-        background-image: linear-gradient(to bottom, #000, transparent);
-    }
+    .vibes_description {
+        position: relative;
+        width: 70%;
+        transition: .5s ease-in-out;
 
-    &::after {
-        bottom: 0;
-        background-image: linear-gradient(to top, #000, transparent);
-    }
+        &_header {
+            display: flex;
+            width: 100%;
+            height: 200px;
 
-    a {
-        display: block;
-        font-size: 2rem;
-        color: #fff;
+            &_img {
+                width: 50%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &_text {
+            &_caption {
+                margin: 50px 0;
+                font-size: 1.5rem;
+                font-family: ProximaNova-Bold;
+                text-transform: uppercase;
+            }
+
+            &_paragraph {
+                margin-bottom: 20px;
+            }
+        }
+
+        .back_link {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 15px 30px 15px 40px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 20px;
+                top: ~"calc(50% - 6px)";
+                display: block;
+                width: 0;
+                height: 0;
+                border-right: 9px solid @gray;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+            }
+        }
     }
 }
 

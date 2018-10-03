@@ -53,7 +53,8 @@ $(document).ready(function () {
 
     $('.vibes_list').jScrollPane({
         verticalDragMinHeight: 90,
-        verticalDragMaxHeight: 90
+        verticalDragMaxHeight: 90,
+        animateScroll: true
     });
 
 });
