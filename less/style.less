@@ -5,6 +5,7 @@
 @import "anim";
 @import "rangeSlider";
 @import "rangeSliderSkin";
+@import "jscrollpane";
 
 html {
     font-size: 20px;
@@ -797,81 +798,10 @@ body {
             .circle {
                 z-index: 1;
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                top: 0;
+                left: 0;
 
-                .aroma_wrap {
-                    z-index: 7;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 510px;
 
-                    .aroma_block {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-
-                .aroma {
-                    position: absolute;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background-color: #fff;
-                    box-shadow: 0 0 25px #fff;
-                    transition: 1.5s ease-in-out;
-                    cursor: pointer;
-                    animation: aroma 5s infinite;
-                    opacity: 0;
-                    transition: 1.5s ease-in-out;
-                }
-
-                .aroma_1 {
-                    top: 250px;
-                    left: 26px;
-                }
-
-                .aroma_2 {
-                    top: 230px;
-                    left: 120px;
-                    animation-delay: 1.2s;
-                }
-
-                .aroma_3 {
-                    bottom: 50px;
-                    left: 150px;
-                    animation-delay: 3s;
-                }
-
-                .aroma_4 {
-                    top: 29px;
-                    right: 215px;
-                    animation-delay: .7s;
-                }
-
-                .aroma_5 {
-                    top: 230px;
-                    right: 120px;
-                    animation-delay: 4.3s;
-                }
-
-                .aroma_6 {
-                    bottom: 150px;
-                    right: 50px;
-                    animation-delay: 1.1s;
-                }
-
-                .aroma_7 {
-                    top: 250px;
-                    right: 26px;
-                    animation-delay: 3.9s;
-                }
 
                 .diagramm_circle {
                     display: none;
@@ -887,6 +817,44 @@ body {
 
                     path {
                         stroke-linejoin: round;
+                    }
+
+                    &.diagramm_open {
+
+                        #trianlge,
+                        #line,
+                        #line-2,
+                        #line-3 {
+                            opacity: 0;
+                        }
+                    }
+
+                    &.red {
+                        stroke: #aa0017;
+                    }
+
+                    &.orange {
+                        stroke: #ae4900;
+                    }
+
+                    &.yellow {
+                        stroke: #b89e00;
+                    }
+
+                    &.green {
+                        stroke: #006f58;
+                    }
+
+                    &.blue_light {
+                        stroke: #00729c;
+                    }
+
+                    &.blue {
+                        stroke: #402fa9;
+                    }
+
+                    &.violet {
+                        stroke: #86209f;
                     }
                 }
             }
@@ -927,6 +895,201 @@ body {
                         top: 220px;
                         width: 273px;
                     }
+                }
+            }
+
+            .aroma_wrap {
+                z-index: 7;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 510px;
+                height: 510px;
+
+                .aroma_block {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+
+                    .aroma {
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        box-shadow: 0 0 25px #fff;
+                        transition: 1.5s ease-in-out;
+                        cursor: pointer;
+                        animation: aroma 5s infinite;
+                        opacity: 0;
+                        transition: .5s ease-in-out;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .aroma_1 {
+                        top: 250px;
+                        left: 26px;
+                    }
+
+                    .aroma_2 {
+                        top: 230px;
+                        left: 120px;
+                        animation-delay: 1.2s;
+                    }
+
+                    .aroma_3 {
+                        top: 451px;
+                        left: 150px;
+                        animation-delay: 3s;
+                    }
+
+                    .aroma_4 {
+                        top: 29px;
+                        right: 215px;
+                        animation-delay: .7s;
+                    }
+
+                    .aroma_5 {
+                        top: 340px;
+                        left: 355px;
+                        animation-delay: 4.3s;
+                    }
+
+                    .aroma_6 {
+                        top: 150px;
+                        right: 50px;
+                        animation-delay: 1.1s;
+                    }
+
+                    .aroma_7 {
+                        top: 250px;
+                        right: 26px;
+                        animation-delay: 3.9s;
+                    }
+                }
+            }
+
+            &_imgs {
+                display: none;
+                z-index: 9;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                cursor: url(/img/cross.cur), auto;
+
+                .aroma_name {
+                    position: absolute;
+                    color: #fff;
+                    text-align: center;
+                    text-transform: uppercase;
+                    animation: fadeIn 1s;
+
+                    &_1 {
+                        top: 55px;
+                        left: 230px;
+                        animation-duration: 1.1s;
+                    }
+
+                    &_2 {
+                        top: 85px;
+                        left: 325px;
+                        animation-duration: 1.2s;
+                    }
+
+                    &_3 {
+                        top: 150px;
+                        left: 395px;
+                        animation-duration: 1.3s;
+                    }
+
+                    &_4 {
+                        top: 250px;
+                        left: 420px;
+                        animation-duration: 1.4s;
+                    }
+
+                    &_5 {
+                        top: 335px;
+                        left: 395px;
+                        animation-duration: 1.5s;
+                    }
+
+                    &_6 {
+                        top: 410px;
+                        left: 330px;
+                        animation-duration: 1.6s;
+                    }
+
+                    &_7 {
+                        top: 435px;
+                        left: 220px;
+                        animation-duration: 1.7s;
+                    }
+
+                    &_8 {
+                        top: 410px;
+                        left: 145px;
+                        animation-duration: 1.8s;
+                    }
+
+                    &_9 {
+                        top: 340px;
+                        left: 70px;
+                        animation-duration: 1.9s;
+                    }
+
+                    &_10 {
+                        top: 240px;
+                        left: 50px;
+                        animation-duration: 2s;
+                    }
+
+                    &_11 {
+                        top: 155px;
+                        left: 75px;
+                        animation-duration: 2.1s;
+                    }
+
+                    &_12 {
+                        top: 85px;
+                        left: 140px;
+                        animation-duration: 2.2s;
+                    }
+                }
+
+                .aroma_diagramm {
+                    display: none;
+                }
+
+                .diagramm_name {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin-bottom: 30px;
+                    font-size: 2.5rem;
+                    font-family: ProximaNova-Bold;
+
+                    .sup {
+                        font-size: 1.2rem;
+                        vertical-align: top;
+                    }
+                }
+
+                .diagramm_img {
+                    z-index: -1;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 330px;
+                    height: 330px;
+                    object-fit: contain;
                 }
             }
         }
@@ -1102,6 +1265,7 @@ body {
 
                     .single_product_info {
                         opacity: 1;
+
                         &_button::before {
                             transform: scale(1);
                         }
@@ -1201,6 +1365,7 @@ body {
     display: flex;
     transition: .5s ease-in-out;
     overflow: hidden;
+
     &::before {
         content: '';
         z-index: 1;
@@ -1431,24 +1596,31 @@ body {
             font-size: 1.15rem;
             text-transform: uppercase;
         }
+
         &.red {
             background-color: #aa0017;
         }
+
         &.orange {
             background-color: #ae4900;
         }
+
         &.yellow {
             background-color: #b89e00;
         }
+
         &.green {
             background-color: #006f58;
         }
+
         &.blue_light {
             background-color: #00729c;
         }
+
         &.blue {
             background-color: #402fa9;
         }
+
         &.violet {
             background-color: #86209f;
         }
@@ -1464,8 +1636,6 @@ body {
         opacity: 1;
     }
 }
-
-
 
 .contact-form {
     position: absolute;
@@ -1574,6 +1744,40 @@ body {
     width: 100%;
     height: 5px;
     background-image: linear-gradient(45deg, #E21B25 0%, #FFE800 32%, #009040 53%, #009FD7 67%, #222BCD 83%, #6221AB 100%);
+}
+
+.vibes_list {
+    position: relative;
+    margin: 100px 100px 0;
+    width: 20%;
+    height: 80vh;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 30px;
+    }
+
+    &::before {
+        top: 0;
+        background-image: linear-gradient(to bottom, #000, transparent);
+    }
+
+    &::after {
+        bottom: 0;
+        background-image: linear-gradient(to top, #000, transparent);
+    }
+
+    a {
+        display: block;
+        font-size: 2rem;
+        color: #fff;
+    }
 }
 
 @import "media";

@@ -51,4 +51,9 @@ $(document).ready(function () {
     $('.product_slider_slide_button').click(setCookieValue);
     $('.products_slider_slide_button').click(setCookieValue);
 
+    $('.vibes_list').jScrollPane({
+        verticalDragMinHeight: 90,
+        verticalDragMaxHeight: 90
+    });
+
 });

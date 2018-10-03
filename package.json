@@ -13,6 +13,7 @@
         "http-server": "^0.11.1",
         "ion-rangeslider": "^2.2.0",
         "jquery": "^3.3.1",
+        "jscrollpane": "^2.2.1",
         "parallax-js": "^3.1.0",
         "rangeslider.js": "^2.3.2",
         "slick-carousel": "^1.8.1",
