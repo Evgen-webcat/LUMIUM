@@ -1,6 +1,5 @@
 var path = require('path');
 var glob = require('glob');
-var webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -9,6 +8,12 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: 'dist'
+    },
+    devServer: {
+        host: '127.0.0.1',
+        port: '8080',
+        open: true
     }
 }

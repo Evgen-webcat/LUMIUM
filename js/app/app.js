@@ -18,8 +18,16 @@ $(document).ready(function () {
     }
 
     $('.menu-button').click(function () {
-        $(this).toggleClass('menu-open');
-        $('.menu').fadeToggle();
+        var menuButton = $(this);
+        if (menuButton.hasClass('menu-open')) {
+            setTimeout(function () {
+                menuButton.toggleClass('menu-open');
+            }, 300);
+            $('.menu').fadeToggle();
+        } else {
+            menuButton.toggleClass('menu-open');
+            $('.menu').delay(400).fadeToggle();
+        }
     });
 
     $('.button').click(function () {

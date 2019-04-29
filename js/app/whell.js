@@ -57,9 +57,13 @@ $(document).ready(function () {
             $('.sky_block').removeClass('anim');
         }
 
-        if (currentPage == 3 && animation == true) {
-            $(window).unbind('mousewheel');
-            $('.mouse').unbind('click');
+        if (currentPage == 3) {
+//            $(window).unbind('mousewheel');
+//            $('.mouse').unbind('click');
+
+            setTimeout(function () {
+                bindWheel();
+            }, 1000);
 
             pageAnimation();
 
@@ -200,6 +204,10 @@ $(document).ready(function () {
                 'width': '15px',
                 'height': '15px',
                 'box-shadow': 'none'
+            });
+            $('.logo_img').on('transitionend', function (prop, time) {
+                console.log(prop);
+                console.log(time);
             });
         }, 15000);
         setTimeout(function () {

@@ -77,7 +77,7 @@ $(document).ready(function () {
     var con;
     var g;
     var pxs = new Array;
-    var rint = 60;
+    var rint = 30;
 
     WIDTH = "100%";
     HEIGHT = "100%";
