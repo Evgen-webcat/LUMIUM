@@ -189,7 +189,7 @@ $(document).ready(function () {
                 if (currentWaves === wavesLength - 1) {
                     clearInterval(waves);
                 } else {
-                    $('.waves_anim')[currentWaves].beginElement()
+                    $('.waves_anim')[currentWaves].beginElement();
                     currentWaves++;
                 }
             }, 500);

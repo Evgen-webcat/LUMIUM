@@ -65,7 +65,7 @@ body {
         color: #fff;
 
         &::before {
-            padding: 55%;
+            padding: 100%;
             box-sizing: border-box;
         }
     }
@@ -74,6 +74,34 @@ body {
         animation: pulse 1s;
         box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     }
+}
+
+.text_red {
+    color: rgb(170, 0, 23);
+}
+
+.text_orange {
+    color: rgb(174, 73, 0);
+}
+
+.text_yellow {
+    color: rgb(184, 158, 0);
+}
+
+.text_green {
+    color: rgb(0, 111, 88);
+}
+
+.text_blue_light {
+    color: rgb(0, 114, 156);
+}
+
+.text_blue {
+    color: rgb(64, 47, 169);
+}
+
+.text_violet {
+    color: rgb(134, 32, 159);
 }
 
 .button_red {
@@ -1326,7 +1354,7 @@ body {
             }
 
             &_img {
-                width: 550px;
+                width: 500px;
             }
 
             &_name {
@@ -1425,7 +1453,6 @@ body {
         transition: .5s ease-in-out;
 
         &_caption {
-            margin-bottom: 30px;
             font-size: 4.2rem;
             font-family: ProximaNova-Bold;
 
@@ -1433,6 +1460,12 @@ body {
                 font-size: 1.9rem;
                 vertical-align: top;
             }
+        }
+
+        &_notes {
+            margin: 30px 0;
+            font-family: ProximaNova-Bold;
+            font-size: 22px;
         }
 
         .product_notes {
@@ -1448,6 +1481,10 @@ body {
             }
         }
 
+        &_part_one {
+            width: 90%;
+        }
+
         &_part_two {
             display: none;
 
@@ -1460,6 +1497,10 @@ body {
     &_imgs {
         width: 60%;
         transition: .5s ease-in-out;
+
+        &.anim {
+            animation: flaskchange 7s infinite;
+        }
 
         &_block_one,
         &_block_two,
@@ -1542,16 +1583,21 @@ body {
         position: absolute;
         top: 0;
         right: 10%;
-        width: 50%;
+        width: 48%;
         height: 100vh;
         opacity: 0;
-        visibility: hidden;
         transition: .5s ease-in-out;
+
+        &.anim {
+            animation: flaskchangebottle 7s infinite;
+        }
 
         &_img {
             position: absolute;
-            left: 0;
-            width: 50vw;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
             object-fit: contain;
 
             &.bottle {
@@ -1664,6 +1710,7 @@ body {
 }
 
 .active_page {
+    z-index: 1;
     visibility: visible;
     opacity: 1;
 }
