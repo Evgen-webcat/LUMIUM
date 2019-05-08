@@ -6,9 +6,11 @@ $(document).ready(function () {
     var currentSlide = getCookie('value') || 0;
     var productQuantity = $('.single_product').length - 1;
     var singleScroll = false;
-    var interval = 5000;
+    var interval = 3000;
     var autoplay = setInterval(rangeAutoplay, interval);
     $('.single_product').eq(currentValue).fadeIn('fast');
+    var href = $('.single_product').eq(currentValue).data('href');
+    $('.buynow').attr('href', href)
 
     $('.range_slider').ionRangeSlider({
         grid: true,
@@ -98,6 +100,8 @@ $(document).ready(function () {
             $('.single_product').eq(value).fadeIn(750);
             $('.irs-grid-text-active').removeClass('irs-grid-text-active');
             $('.irs-grid-text').eq(value).addClass('irs-grid-text-active');
+            var href = $('.single_product').eq(value).data('href');
+            $('.buynow').attr('href', href)
             currentValue = value;
             currentSlide = value;
         }

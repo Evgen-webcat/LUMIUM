@@ -64,18 +64,4 @@ $(document).ready(function () {
         verticalDragMaxHeight: 90,
         animateScroll: true
     });
-
-    $('#contact_form').submit(function (event) {
-        event.preventDefault();
-        var data = $(this).serialize();
-
-        $.ajax({
-            url: '../send.php',
-            type: 'POST',
-            data: data,
-            succes: function () {
-                console.log('sended');
-            }
-        });
-    });
 });
