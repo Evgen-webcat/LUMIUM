@@ -887,6 +887,48 @@ body {
             width: 50%;
             width: 700px;
 
+            &.anim {
+                .dot {
+                    animation: zoomDot 1.5s forwards;
+                }
+
+                .logo_img {
+                    animation: zoomLogo_img 1.5s forwards;
+                }
+
+                .diagramm_circle {
+                    animation: diagrammCircle 3.5s 1.5s forwards;
+                }
+
+                .parallax_img_wrap {
+                    animation: opacityIn 1.5s 3s forwards;
+                }
+
+                .aroma_block {
+                    animation: opacityIn 1.5s 3.5s forwards;
+                }
+            }
+
+            &.animReverse {
+
+                .aroma_block,
+                .parallax_img_wrap {
+                    animation: opacityOut 1.5s forwards;
+                }
+
+                .diagramm_circle {
+                    animation: diagrammCircleReverse 3.5s forwards;
+                }
+
+                .dot {
+                    animation: zoomDotReverse 1.5s forwards;
+                }
+
+                .logo_img {
+                    animation: zoomLogo_imgReverse 1.5s forwards;
+                }
+            }
+
             .parallax_wrap {
                 z-index: 5;
                 position: relative;
@@ -908,13 +950,7 @@ body {
                 border-radius: 50%;
                 background-color: #fff;
                 box-shadow: 0 0 25px #fff;
-                transition: 1.5s ease-in-out;
-
-                &.anim {
-                    width: 120px;
-                    height: 120px;
-                    background-color: #4c4c4c;
-                }
+                //                transition: 1.5s ease-in-out;
             }
 
             .logo_img {
@@ -923,19 +959,13 @@ body {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 10px;
-                height: 10px;
+                width: 15px;
+                height: 15px;
                 border-radius: 50%;
-                transition: 1.5s ease-in-out;
+                //                transition: 1.5s ease-in-out;
 
                 &_path {
                     fill: #fff;
-                }
-
-                &.anim {
-                    width: 120px;
-                    height: 120px;
-                    box-shadow: 0 0 25px rgba(255, 255, 255, .5);
                 }
             }
 
@@ -965,6 +995,7 @@ body {
                     }
 
                     &.diagramm_open {
+                        animation-fill-mode: none;
 
                         #trianlge,
                         #line,
@@ -1036,7 +1067,7 @@ body {
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                transition: .5s ease-in-out;
+                //                transition: .5s ease-in-out;
                 overflow: hidden;
 
                 .parallax_img_block {
@@ -1051,6 +1082,7 @@ body {
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
+                        transition: .5s ease-in-out;
                     }
 
                     .parallax_img1 {
@@ -1080,6 +1112,7 @@ body {
                     position: relative;
                     top: 0;
                     left: 0;
+                    opacity: 0;
 
                     .aroma {
                         position: absolute;
@@ -1088,15 +1121,14 @@ body {
                         border-radius: 50%;
                         background-color: #fff;
                         box-shadow: 0 0 25px #fff;
-                        transition: 1.5s ease-in-out;
+                        transition: .5s ease-in-out;
                         cursor: pointer;
                         animation: aroma 10s infinite;
-                        opacity: 0;
-                        transition: .5s ease-in-out;
+                        //                        transition: .5s ease-in-out;
 
-//                        &:hover {
-//                            cursor: pointer;
-//                        }
+                        //                        &:hover {
+                        //                            cursor: pointer;
+                        //                        }
                     }
 
                     .aroma_1 {
@@ -2046,6 +2078,15 @@ body {
             right: 0;
         }
     }
+}
+
+.contact_info {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
 }
 
 @import "media";

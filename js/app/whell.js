@@ -8,6 +8,8 @@ $(document).ready(function () {
     var parallaxDiagramm;
     var parallaxLogo;
     var parallaxAroma;
+    var parallax = false;
+    var waves;
 
     window.bindWheel = function () {
         if (mainPage) {
@@ -87,7 +89,10 @@ $(document).ready(function () {
             pageAnimation();
         } else {
             setTimeout(function () {
-                bindWheel();
+                $('.diagramm').removeClass('anim animReverse');
+                if (parallax) {
+                    parallaxDestroy();
+                }
             }, 1000);
         }
 
@@ -96,6 +101,10 @@ $(document).ready(function () {
         } else {
             $('.products_slider').slick('slickPause');
         }
+
+        setTimeout(function () {
+            bindWheel();
+        }, 1000);
     }
 
     function nextPage() {
@@ -127,90 +136,70 @@ $(document).ready(function () {
             hoverOnly: true,
             pointerEvents: true
         });
+        parallax = true;
     };
 
     window.parallaxDestroy = function () {
         parallaxDiagramm.destroy();
         parallaxLogo.destroy();
         parallaxAroma.destroy();
+        parallax = false;
     };
 
     function pageAnimation() {
-        $(window).unbind('mousewheel');
-        $('.mouse_up, .mouse_down').unbind('click');
+        $('.waves').css('display', 'none');
+        clearInterval(waves);
+        $('.waves_anim').each(function () {
+            $(this)[0].endElement();
+        });
         setTimeout(function () {
-            $('.dot, .logo_img').addClass('anim');
-            $('.logo_img').one('transitionend', function () {
-                $('.diagramm_circle').animate({
-                    'opacity': 1
-                }, 300);
-                vivus = new Vivus('diagramm', {
-                    duration: 100,
-                    type: 'sync'
-                }, setGradient);
-            });
+            $('.diagramm').addClass('anim');
         }, 1000);
-
-        function setGradient() {
-            $(".parallax_img_wrap").css('opacity', '1');
-            $(".diagramm_circle").animate({
-                opacity: 0
-            }, 500, function () {
-                $(".aroma").css('opacity', '1');
-                setTimeout(function () {
-                    parallaxInit();
-                    $(window).bind('mousewheel', function (event) {
-                        event.preventDefault();
-                        $(window).unbind('mousewheel');
-                        pageAnimationReverse();
-                    });
-                    $('.mouse').bind('click', function () {
-                        $('.mouse_up, .mouse_down').unbind('click');
-                        pageAnimationReverse();
-                    });
-                }, 500);
-            });
-        };
-    };
-
-    //    function pageAnimationDestroy() {
-    //        $('.dot, .logo_img, #diagramm, .parallax_img_wrap, .diagramm_circle, .aroma').addClass('notransition').removeAttr('style').removeClass('notransition');
-    //        $('.dot, .logo_img').addClass('notransition').removeClass('anim').removeClass('notransition');
-    //        if (vivusStarted) {
-    //            vivus.destroy();
-    //        }
-    //        if (parallaxStarted) {
-    //            parallaxDestroy();
-    //        }
-    //    }
-
-    function pageAnimationReverse() {
-        parallaxDestroy();
-        $(".aroma").css('opacity', '0');
-        $(".parallax_img_wrap").css('opacity', '0');
-        $(".diagramm_circle").animate({
-            opacity: 1
-        }, 500, function () {
-            vivus.play(-1, function () {
-                $('.text_1').fadeOut(1000);
-                $('.text_2').delay(1000).fadeIn();
-                $('.waves').css('display', 'block');
-                var currentWaves = 0;
-                var wavesLength = $('.waves_anim').length;
-                var waves = setInterval(function () {
-                    if (currentWaves !== wavesLength) {
-                        $('.waves_anim')[currentWaves].beginElement();
-                        currentWaves++;
-                    } else {
-                        clearInterval(waves);
-                        $('.dot, .logo_img').removeClass('anim');
-                        setTimeout(function () {
-                            $('.waves').css('display', 'none');
-                            bindWheel();
-                        }, parseInt($('.waves_anim').eq(wavesLength - 1).attr('dur')) * 1000);
-                    }
-                }, 500);
+        $('.diagramm_circle').one('animationstart', function () {
+            vivus = new Vivus('diagramm', {
+                duration: 100,
+                type: 'sync'
             });
         });
+        $('.aroma_block').eq(0).one('animationend', function () {
+            parallaxInit();
+            $(window).unbind('mousewheel');
+            $('.mouse_up, .mouse_down').unbind('click');
+            $(window).bind('mousewheel', animReverse);
+            $('.mouse_up, .mouse_down').bind('click', animReverse);
+        });
+    };
+
+    function animReverse() {
+        $(window).unbind('mousewheel');
+        $('.mouse_up, .mouse_down').unbind('click');
+        parallaxDestroy();
+        $('.diagramm').removeClass('anim').addClass('animReverse');
+        $('.diagramm_circle').one('animationstart', function () {
+            setTimeout(function () {
+                vivus.play(-1);
+            }, 1500);
+        });
+        $('.diagramm_circle').one('animationend', function () {
+            $('.waves').css('display', 'block');
+            var currentWaves = 0;
+            var wavesLength = $('.waves_anim').length;
+            waves = setInterval(function () {
+                if (currentWaves !== wavesLength) {
+                    $('.waves_anim')[currentWaves].beginElement();
+                    currentWaves++;
+                } else {
+                    clearInterval(waves);
+                    $('.dot, .logo_img').removeClass('anim');
+                    setTimeout(function () {
+                        $('.waves').css('display', 'none');
+                        bindWheel();
+                    }, parseInt($('.waves_anim').eq(wavesLength - 1).attr('dur')) * 1000);
+                }
+            }, 500);
+        });
+        setTimeout(function () {
+            bindWheel();
+        }, 1000);
     };
 });
