@@ -140,7 +140,7 @@ $(document).ready(function () {
         $('.mouse_up, .mouse_down').unbind('click');
         setTimeout(function () {
             $('.dot, .logo_img').addClass('anim');
-            $('.logo_img').one('transitionend', function (prop) {
+            $('.logo_img').one('transitionend', function () {
                 $('.diagramm_circle').animate({
                     'opacity': 1
                 }, 300);
