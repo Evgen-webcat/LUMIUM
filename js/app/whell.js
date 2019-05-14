@@ -10,6 +10,8 @@ $(document).ready(function () {
     var parallaxAroma;
     var parallax = false;
     var waves;
+    var animation = false;
+    window.animReverse = animReverse;
 
     window.bindWheel = function () {
         if (mainPage) {
@@ -28,7 +30,17 @@ $(document).ready(function () {
         }
     }
 
-    bindWheel();
+    if ($(window).width() > 1200) {
+        bindWheel();
+    }
+
+    $(window).resize(function () {
+        $(window).unbind('mousewheel');
+        $('.mouse_up, .mouse_down').unbind('click');
+        if ($(window).width() > 1200) {
+            bindWheel();
+        }
+    });
 
     function wheel(event) {
         if (event.originalEvent.wheelDelta / 120 < 0) {
@@ -86,14 +98,18 @@ $(document).ready(function () {
         }
 
         if (page.eq(currentPage).hasClass('main_animation')) {
+            animation = true;
             pageAnimation();
         } else {
-            setTimeout(function () {
-                $('.diagramm').removeClass('anim animReverse');
-                if (parallax) {
-                    parallaxDestroy();
-                }
-            }, 1000);
+            animation = false;
+            clearInterval(waves);
+            waves = 0;
+            //            setTimeout(function () {
+            //                $('.diagramm').removeClass('anim animReverse');
+            //                if (parallax) {
+            //                    parallaxDestroy();
+            //                }
+            //            }, 1000);
         }
 
         if (page.eq(currentPage).hasClass('page_slick')) {
@@ -147,8 +163,13 @@ $(document).ready(function () {
     };
 
     function pageAnimation() {
+        $('.diagramm').removeClass('anim animReverse');
+        if (parallax) {
+            parallaxDestroy();
+        }
+        $('.text_1').fadeIn(0);
+        $('.text_2').fadeOut(0);
         $('.waves').css('display', 'none');
-        clearInterval(waves);
         $('.waves_anim').each(function () {
             $(this)[0].endElement();
         });
@@ -161,19 +182,25 @@ $(document).ready(function () {
                 type: 'sync'
             });
         });
-        $('.aroma_block').eq(0).one('animationend', function () {
-            parallaxInit();
-            $(window).unbind('mousewheel');
-            $('.mouse_up, .mouse_down').unbind('click');
-            $(window).bind('mousewheel', animReverse);
-            $('.mouse_up, .mouse_down').bind('click', animReverse);
+        $('.parallax_img_wrap').one('animationend', function () {
+            if (!parallax) {
+                parallaxInit();
+            }
+            if (animation) {
+                $(window).unbind('mousewheel');
+                $('.mouse_up, .mouse_down').unbind('click');
+                $(window).bind('mousewheel', animReverse);
+                $('.mouse_up, .mouse_down').bind('click', animReverse);
+            }
         });
     };
 
     function animReverse() {
         $(window).unbind('mousewheel');
         $('.mouse_up, .mouse_down').unbind('click');
-        parallaxDestroy();
+        if (parallax) {
+            parallaxDestroy();
+        }
         $('.diagramm').removeClass('anim').addClass('animReverse');
         $('.diagramm_circle').one('animationstart', function () {
             setTimeout(function () {
@@ -181,6 +208,9 @@ $(document).ready(function () {
             }, 1500);
         });
         $('.diagramm_circle').one('animationend', function () {
+            $('.text_1').fadeOut(500, function () {
+                $('.text_2').fadeIn(500);
+            });
             $('.waves').css('display', 'block');
             var currentWaves = 0;
             var wavesLength = $('.waves_anim').length;
@@ -190,10 +220,8 @@ $(document).ready(function () {
                     currentWaves++;
                 } else {
                     clearInterval(waves);
-                    $('.dot, .logo_img').removeClass('anim');
                     setTimeout(function () {
                         $('.waves').css('display', 'none');
-                        bindWheel();
                     }, parseInt($('.waves_anim').eq(wavesLength - 1).attr('dur')) * 1000);
                 }
             }, 500);

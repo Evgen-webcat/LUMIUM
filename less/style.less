@@ -14,9 +14,13 @@ html {
 body {
     font-family: "ProximaNova";
     color: #B1B3B4;
+    letter-spacing: 2px;
     width: 100%;
     overflow-x: hidden;
-    //    user-select: none;
+
+    &.scroll {
+        overflow: hidden;
+    }
 }
 
 .notransition {
@@ -257,6 +261,8 @@ body {
         transform: translate(-50%, -50%);
         width: 120px;
         height: 120px;
+        border-radius: 50%;
+        background-color: #000;
     }
 
     .radiowaves_wrap {
@@ -403,6 +409,22 @@ body {
         letter-spacing: 2px;
     }
 
+    .aroma_title {
+        display: inline-block;
+        position: relative;
+        margin: 50px 0;
+        font-size: 4.2rem;
+        font-family: ProximaNova-Bold;
+        letter-spacing: 2px;
+
+        &_number {
+            position: absolute;
+            left: 100%;
+            bottom: 70%;
+            font-size: 1.9rem;
+        }
+    }
+
     &_caption {
         font-size: 1.55rem;
         margin-bottom: 30px;
@@ -490,7 +512,7 @@ body {
     }
 
     &.mouse_down {
-        top: 30px;
+        top: 34px;
     }
 
     &.visible {
@@ -633,7 +655,7 @@ body {
 
 
     .menu-open {
-        box-shadow: 0 0 0 100vw #000, 0 0 0 100vh #fff;
+        box-shadow: 0 0 0 200vw #000, 0 0 0 200vw #fff;
         border-radius: 0;
         background-color: #000;
 
@@ -661,10 +683,13 @@ body {
     overflow: hidden;
 }
 
-.page_1 {
+.page {
     visibility: hidden;
     opacity: 0;
     transition: .5s ease-in-out;
+}
+
+.page_1 {
 
     &_content {
         position: absolute;
@@ -716,9 +741,6 @@ body {
 }
 
 .page_2 {
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s ease-in-out;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -761,7 +783,7 @@ body {
                 .box {
                     z-index: -1;
                     position: absolute;
-                    top: -80px;
+                    top: -120px;
                     left: 45%;
                     width: 45%;
                 }
@@ -771,9 +793,6 @@ body {
 }
 
 .page_3 {
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -854,9 +873,6 @@ body {
 }
 
 .page_4 {
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s ease-in-out;
 
     &_content {
         position: absolute;
@@ -870,6 +886,7 @@ body {
         overflow: hidden;
 
         .text {
+            padding-right: 100px;
             width: ~"calc(100% - 700px)";
 
             &_button {
@@ -878,7 +895,8 @@ body {
             }
         }
 
-        .text_2 {
+        .text_2,
+        .text_aroma {
             display: none;
         }
 
@@ -921,11 +939,11 @@ body {
                 }
 
                 .dot {
-                    animation: zoomDotReverse 1.5s forwards;
+                    animation: zoomDotReverse 1.5s 7s backwards;
                 }
 
                 .logo_img {
-                    animation: zoomLogo_imgReverse 1.5s forwards;
+                    animation: zoomLogo_imgReverse 1.5s 7s backwards;
                 }
             }
 
@@ -950,7 +968,7 @@ body {
                 border-radius: 50%;
                 background-color: #fff;
                 box-shadow: 0 0 25px #fff;
-                //                transition: 1.5s ease-in-out;
+                //                                transition: 1.5s ease-in-out;
             }
 
             .logo_img {
@@ -962,7 +980,7 @@ body {
                 width: 15px;
                 height: 15px;
                 border-radius: 50%;
-                //                transition: 1.5s ease-in-out;
+                //                                transition: 1.5s ease-in-out;
 
                 &_path {
                     fill: #fff;
@@ -1299,9 +1317,6 @@ body {
 }
 
 .page_5 {
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s ease-in-out;
 
     &_background {
         position: relative;
@@ -1343,6 +1358,8 @@ body {
         left: 10%;
         display: flex;
         padding: 10px 30px;
+        box-sizing: border-box;
+        width: 30%;
         background-image: radial-gradient(rgba(0, 0, 0, 1), transparent 70%);
 
         .cross {
@@ -1351,7 +1368,7 @@ body {
 
         .text {
             padding: 0 20px;
-            width: 500px;
+            width: ~"calc(100% - 20px)";
             color: #fff;
 
             &_tagline {
@@ -1385,12 +1402,13 @@ body {
             margin-bottom: 100px;
             display: flex;
             align-items: center;
-            font-size: 2.3rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
+            letter-spacing: 20px;
 
             .luxar {
                 padding: 0 30px;
-                height: 50px;
+                height: 70px;
                 fill: #b1b3b4;
             }
 
@@ -1496,6 +1514,14 @@ body {
             &_img {
                 width: 500px;
                 transition: .5s ease-in-out;
+            }
+
+            .single_product_box_img {
+                z-index: -1;
+                position: absolute;
+                top: -25%;
+                right: -10%;
+                height: 130%;
             }
 
             &_name {
@@ -1606,11 +1632,12 @@ body {
         &_notes {
             margin: 30px 0;
             font-family: ProximaNova-Bold;
-            font-size: 22px;
+            font-size: 1.1rem;
         }
 
         .product_notes {
             margin-bottom: 20px;
+            color: #fff;
             text-transform: uppercase;
 
             &_list {
@@ -2087,6 +2114,80 @@ body {
     display: flex;
     justify-content: space-between;
     width: 90%;
+
+    .link {
+        color: #b1b3b4;
+        transition: .5s ease-in-out;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.orientation {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: #000;
+
+    .phone {
+        margin-bottom: 20px;
+        position: relative;
+        width: 40px;
+        height: 70px;
+        border-radius: 5px;
+        background-color: #fff;
+        animation: rotate 3s infinite;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+        }
+
+        &:before {
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+
+        &::after {
+            top: 5px;
+            left: 5px;
+            width: 30px;
+            height: 50px;
+            background-color: #000;
+        }
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+}
+
+.load {
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
 }
 
 @import "media";

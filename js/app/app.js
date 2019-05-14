@@ -1,6 +1,7 @@
 $(document).ready(function () {
     'use strict'
 
+
     $('.preloader_content_button').click(function () {
         $('.preloader').fadeOut();
         document.cookie = 'cookie=true'
@@ -19,6 +20,7 @@ $(document).ready(function () {
 
     $('.menu-button').click(function () {
         var menuButton = $(this);
+        $('body').toggleClass('scroll');
         if (menuButton.hasClass('menu-open')) {
             setTimeout(function () {
                 menuButton.toggleClass('menu-open');
@@ -45,7 +47,7 @@ $(document).ready(function () {
 
     if (!productPage) {
         if (getCookie('value') !== '0') {
-            document.cookie = 'value=0'
+            document.cookie = 'value=0; path=/'
         }
     }
 
@@ -56,12 +58,14 @@ $(document).ready(function () {
         return false;
     };
 
-    $('.product_slider_slide_button').click(setCookieValue);
-    $('.products_slider_slide_button').click(setCookieValue);
+    $('body').on('click', '.product_slider_slide_button', setCookieValue);
+    $('body').on('click', '.products_slider_slide_button', setCookieValue);
 
     $('.vibes_list').jScrollPane({
         verticalDragMinHeight: 90,
         verticalDragMaxHeight: 90,
         animateScroll: true
     });
+
+    $('.load').fadeOut();
 });

@@ -1,5 +1,11 @@
 //out: null
 
+@media (max-width: 1920px) {
+    html {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 1900px) {
     html {
         font-size: 12px;
@@ -15,11 +21,11 @@
             height: 510px;
 
             .text {
+                padding-right: 50px;
                 width: ~"calc(100% - 510px)";
             }
 
             .diagramm {
-                width: 50%;
                 width: 510px;
 
                 .circle {
@@ -182,14 +188,492 @@
     }
 }
 
+@media (max-width: 1280px) {
+    .product {
+        &_block {
+            height: 55vh;
+
+            .single_product_img {
+                width: auto;
+                height: 45vh;
+            }
+        }
+
+        .buynow {
+            display: none;
+        }
+    }
+}
+
 @media (max-width: 1200px) {
     .main {
         height: auto;
+        min-height: 500px;
+
+        &.productPage {
+            height: 100vh;
+        }
+    }
+
+    .page {
+        position: static;
+        padding: 50px 10%;
+        box-sizing: border-box;
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .page_1 {
+        &_content {
+            padding: 20px 0 0;
+            position: static;
+            transform: translate(0, 0);
+
+            .product_slider {
+                display: none;
+            }
+        }
+
+        .text .armand-logo,
+        .text .logo {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text_tagline {
+            text-align: center;
+        }
+    }
+
+    .page_4_content {
+        flex-direction: column;
+        padding: 0;
+        position: static;
+        transform: translate(0, 0);
+        height: auto;
+
+        .text {
+            padding: 0;
+            width: 100%;
+        }
+
+        .diagramm {
+            margin: 0 auto;
+            height: 510px;
+
+            .dot,
+            .logo_img {
+                width: 17%;
+                height: 17%;
+            }
+
+            .dot {
+                background-color: #4c4c4c;
+            }
+
+            .logo_img {
+                box-shadow: 0 0 25px rgba(255, 255, 255, .5);
+            }
+
+            .parallax_img_wrap {
+                opacity: 1;
+            }
+
+            .aroma_wrap .aroma_block {
+                opacity: 1;
+            }
+        }
+    }
+
+    .page_5 {
+        padding: 0;
+
+        &_content {
+            padding: 30px 10%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+
+            .text {
+                padding: 0 0 0 20px;
+                width: auto;
+            }
+        }
+
+        .bottle {
+            display: none;
+        }
+    }
+
+    .page_6_content {
+        position: static;
+        transform: translate(0, 0);
+
+        &_caption {
+            margin-bottom: 50px;
+            display: block;
+
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            .luxar {
+                margin: 0 auto;
+                padding: 0;
+                display: block;
+            }
+        }
+
+        &_links {
+            margin-top: 50px;
+
+            .link {
+                margin: 10px 0;
+                display: block;
+
+                &:first-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .text {
+        padding: 0;
+        width: 100%;
+    }
+
+    .mouse {
+        display: none;
+    }
+
+    .radiowaves_wrap {
+        display: none;
+    }
+
+    .menu {
+        width: auto;
+        height: auto;
+
+        .menu-list {
+            position: static;
+            transform: translate(0, 0);
+
+            .menu-link {
+                font-size: 2rem;
+            }
+        }
+
+        .lang {
+            position: static;
+            border-top: 1px solid #87888a;
+
+            li {
+                padding-top: 20px;
+                display: block;
+                width: auto;
+                border: none;
+            }
+        }
+    }
+
+    .product_block .single_product .single_product_box_img {
+        display: none;
+    }
+
+    .product-details {
+        &_text {
+            padding: 70px 0;
+
+            &_notes {
+                margin: 0 0 10px;
+                //                font-size: 16px;
+            }
+
+            &_part_one {
+                width: 100%;
+            }
+
+            .product_notes {
+                margin-bottom: 10px;
+            }
+
+            .product_notes_list {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .mouse_block_text {
+        bottom: 30px;
+        font-size: 1rem;
+    }
+
+    .mouse_block_icon {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .main.productPage {
+        overflow: auto;
+
+        .product-details {
+            flex-direction: column;
+            overflow: auto;
+
+            &::after {
+                display: none;
+            }
+
+            &_imgs,
+            &_box_img {
+                display: none;
+
+                &.anim {
+                    animation: none;
+                }
+            }
+
+            &_imgs {
+                display: block;
+                margin-bottom: 50px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 991px) {
+    .orientation {
+        display: flex;
     }
 }
 
 @media (max-width: 768px) {
+    .preloader {
+        &_logo {
+            top: 40%;
+        }
+
+        &_content {
+            padding: 0 10px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+
+    .product {
+        .range {
+            width: 70%;
+        }
+    }
+
+    .irs-grid-text {
+        visibility: hidden !important;
+    }
+
+    .irs-grid-text-active {
+        visibility: visible !important;
+    }
+
+    .product-details {
+        &_text {
+            width: 100%;
+        }
+    }
+
     .contact-form {
         width: 90%;
+        position: static;
+        margin: 70px auto 0;
+        transform: translate(0, 0);
+    }
+
+    .contact_info {
+        position: static;
+        margin: 30px auto 0;
+        flex-direction: column;
+        text-align: center;
+
+        li {
+            margin-bottom: 20px;
+        }
+    }
+
+    .contact_footer {
+        display: none;
+    }
+
+    .page {
+        padding: 50px 3%;
+    }
+
+    .page_4 {
+        &_content {
+            .diagramm {
+                width: 280px;
+                height: 280px;
+
+                .circle {
+
+                    .diagramm_circle {
+                        padding: 0;
+                        width: 280px;
+                    }
+                }
+
+                .parallax_img_wrap {
+
+                    .parallax_img_block {
+
+                        .parallax_img1 {
+                            width: 288px;
+                        }
+
+                        .parallax_img2 {
+                            width: 170px;
+                        }
+
+                        .parallax_img3 {
+                            top: 117px;
+                            width: 170px;
+                        }
+                    }
+                }
+
+                .aroma_wrap {
+                    width: 280px;
+                    height: 280px;
+
+                    .aroma_block {
+
+                        .aroma {
+                            width: 10px;
+                            height: 10px;
+                        }
+
+                        .aroma_1 {
+                            top: 140px;
+                            left: -4px;
+                        }
+
+                        .aroma_2 {
+                            top: 120px;
+                            left: 55px;
+                        }
+
+                        .aroma_3 {
+                            top: 258px;
+                            left: 70px;
+                        }
+
+                        .aroma_4 {
+                            top: -4px;
+                            right: 130px;
+                        }
+
+                        .aroma_5 {
+                            top: 193px;
+                            left: 195px;
+                        }
+
+                        .aroma_6 {
+                            top: 70px;
+                            right: 12px;
+                        }
+
+                        .aroma_7 {
+                            top: 135px;
+                            right: -4px;
+                        }
+                    }
+                }
+
+                &_imgs {
+
+                    .aroma_name {
+                        font-size: .5rem;
+
+                        &_1 {
+                            top: 20px;
+                            left: 121px;
+                        }
+
+                        &_2 {
+                            top: 39px;
+                            left: 182px;
+                        }
+
+                        &_3 {
+                            top: 78px;
+                            left: 223px;
+                        }
+
+                        &_4 {
+                            top: 137px;
+                            left: 242px;
+                        }
+
+                        &_5 {
+                            top: 193px;
+                            left: 225px;
+                        }
+
+                        &_6 {
+                            top: 237px;
+                            left: 185px;
+                        }
+
+                        &_7 {
+                            top: 250px;
+                            left: 116px;
+                        }
+
+                        &_8 {
+                            top: 237px;
+                            left: 70px;
+                        }
+
+                        &_9 {
+                            top: 195px;
+                            left: 25px;
+                        }
+
+                        &_10 {
+                            top: 135px;
+                            left: 9px;
+                        }
+
+                        &_11 {
+                            top: 80px;
+                            left: 25px;
+                        }
+
+                        &_12 {
+                            top: 39px;
+                            left: 67px;
+                        }
+                    }
+
+                    .diagramm_img {
+                        width: 200px;
+                        height: 200px;
+                    }
+
+                    .diagramm_name {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .page_5_background {
+        opacity: 1;
     }
 }
