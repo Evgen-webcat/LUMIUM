@@ -16,7 +16,7 @@ $(document).ready(function () {
     });
 
     function aromaOnPC() {
-        $('.aroma').click(function () {
+        $('.aroma').bind('click', function () {
             $(window).unbind('mousewheel');
             $('.mouse_up, .mouse_down').unbind('click');
             color = $(this).data('aroma');
@@ -37,7 +37,7 @@ $(document).ready(function () {
             });
         });
 
-        $('.diagramm_imgs').click(function () {
+        $('.diagramm_imgs').bind('click', function () {
             $('.aroma_' + color).fadeOut(300, function () {
                 $('.text_1').fadeIn(300);
             });
@@ -59,34 +59,37 @@ $(document).ready(function () {
         });
     }
 
-    function aromaOnMobile () {
-        $('.aroma').click(function () {
+    function aromaOnMobile() {
+        $('.aroma').on('click', openDiagram);
+
+        function openDiagram() {
+            $('.aroma').off('click');
             color = $(this).data('aroma');
             $(".diagramm_circle").addClass('diagramm_open ' + color + '');
-            $(".diagramm_circle").animate({
+            $(".diagramm_circle").stop(true, true).animate({
                 opacity: 1
             }, 500);
             $(".aroma, .parallax_img").css('opacity', '0');
-            $('.logo_img, .dot').animate({
+            $('.logo_img, .dot').stop(true, true).animate({
                 opacity: 0
             }, 500);
-            $('.diagramm_imgs').fadeIn();
-            $('.diagramm_' + color + '').fadeIn();
-        });
+            $('.diagramm_imgs').stop(true, true).fadeIn();
+            $('.diagramm_' + color + '').stop(true, true).fadeIn();
+        }
 
         $('.diagramm_imgs').click(function () {
-            $('.diagramm_imgs').fadeOut();
-            $('.diagramm_' + color + '').fadeOut();
+            $('.diagramm_imgs').stop(true, true).fadeOut();
+            $('.diagramm_' + color + '').stop(true, true).fadeOut();
             $(".aroma, .parallax_img").css('opacity', '1');
-            $('.logo_img, .dot').animate({
+            $('.logo_img, .dot').stop(true, true).animate({
                 opacity: 1
             }, 500);
-            $(".diagramm_circle").animate({
+            $(".diagramm_circle").stop(true, true).animate({
                 opacity: 0
-            }, 500);
-            setTimeout(function () {
-                $(".diagramm_circle").removeClass('diagramm_open ' + color + '');
-            }, 500);
+            }, 500, function () {
+                    $(".diagramm_circle").removeClass('diagramm_open ' + color + '');
+                    $('.aroma').on('click', openDiagram);
+            });
         });
     }
 });

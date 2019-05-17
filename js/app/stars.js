@@ -84,7 +84,7 @@ $(document).ready(function () {
     WIDTH = window.innerWidth;
     HEIGHT = window.innerHeight;
     canvas = document.getElementById("stars");
-    if (canvas) {
+    if (canvas && getComputedStyle(canvas).display !== 'none') {
         $(canvas).attr("width", WIDTH).attr("height", HEIGHT);
         con = canvas.getContext("2d");
         for (var e = 0; e < 100; e++) {

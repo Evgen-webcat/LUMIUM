@@ -186,9 +186,44 @@
             }
         }
     }
+
+    .page_2 .products_slider_slide_button {
+        padding-top: 110px;
+    }
 }
 
 @media (max-width: 1280px) {
+    html {
+        font-size: 9px;
+    }
+
+    .header {
+        .logo-wrap .logo {
+            width: 100px;
+        }
+
+        .menu-button .burger {
+            width: 30px;
+            height: 1px;
+
+            &::before {
+                top: -7px;
+            }
+
+            &::after {
+                bottom: -7px;
+            }
+        }
+
+        .menu-open .burger::before {
+            top: 0;
+        }
+
+        .menu-open .burger::after {
+            bottom: 0;
+        }
+    }
+
     .product {
         &_block {
             height: 55vh;
@@ -198,14 +233,46 @@
                 height: 45vh;
             }
         }
+    }
 
-        .buynow {
-            display: none;
+    .page_1 .text .armand-logo,
+    .page_1 .text .logo {
+        width: 60%;
+    }
+
+    .page_2 .products_slider_slide_button {
+        padding-top: 80px;
+    }
+
+    .mouse svg {
+        width: 15px;
+    }
+
+    .product-details_text {
+        &_notes {
+            margin: 20px 0;
         }
+
+        .product_notes {
+            margin-bottom: 10px;
+        }
+
+        .product_notes_list {
+            margin-bottom: 20px;
+        }
+    }
+
+    .preloader_logo {
+        width: 80px;
+        height: 80px;
     }
 }
 
 @media (max-width: 1200px) {
+    .stars {
+        display: none;
+    }
+
     .main {
         height: auto;
         min-height: 500px;
@@ -244,6 +311,10 @@
         .text_tagline {
             text-align: center;
         }
+    }
+
+    .page_2 .products_slider_slide_button {
+        padding-top: 55px;
     }
 
     .page_4_content {
@@ -380,10 +451,6 @@
         }
     }
 
-    .product_block .single_product .single_product_box_img {
-        display: none;
-    }
-
     .product-details {
         &_text {
             padding: 70px 0;
@@ -415,16 +482,46 @@
     .mouse_block_icon {
         display: none;
     }
+
+    .aroma {
+        position: relative;
+
+        &::after {
+            content: '';
+            z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            width: 500%;
+            height: 500%;
+            border-radius: 50%;
+        }
+    }
 }
 
 @media (max-width: 991px) {
 
     .main.productPage {
-        overflow: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
 
         .product-details {
+            padding-bottom: 90px;
             flex-direction: column;
-            overflow: auto;
+
+            &.active_page {
+                position: static;
+                height: auto;
+                overflow: visible;
+            }
+
+            &_text {
+                width: 100%;
+                padding-bottom: 30px;
+            }
 
             &::after {
                 display: none;
@@ -441,14 +538,29 @@
 
             &_imgs {
                 display: block;
-                margin-bottom: 50px;
                 width: 100%;
             }
         }
     }
+
+    .mouse_block {
+        margin: -70px 0 20px;
+        transition: none;
+
+        &_text {
+            position: relative;
+            left: 0;
+            bottom: 0;
+            margin-left: 10%;
+        }
+    }
+
+    .page_2 .products_slider_slide_button {
+        padding-top: 45px;
+    }
 }
 
-@media (orientation: landscape) and (max-width: 991px) {
+@media (orientation: landscape) and (max-width: 768px) {
     .orientation {
         display: flex;
     }
@@ -464,7 +576,13 @@
             padding: 0 10px;
             box-sizing: border-box;
             width: 100%;
+
+            &_button {
+                padding: 5px 40px;
+            }
         }
+
+
     }
 
     .product {
@@ -473,18 +591,16 @@
         }
     }
 
+    .product-details {
+        padding: 0 3%;
+    }
+
     .irs-grid-text {
         visibility: hidden !important;
     }
 
     .irs-grid-text-active {
         visibility: visible !important;
-    }
-
-    .product-details {
-        &_text {
-            width: 100%;
-        }
     }
 
     .contact-form {
@@ -511,6 +627,10 @@
 
     .page {
         padding: 50px 3%;
+    }
+
+    .page_5 {
+        padding: 0;
     }
 
     .page_4 {
@@ -675,5 +795,32 @@
 
     .page_5_background {
         opacity: 1;
+    }
+
+    .mouse_block_text {
+        margin-left: 3%;
+    }
+
+    .buynow,
+    .main_page_link {
+        display: none;
+    }
+}
+
+@media (max-width: 479px) {
+    .page_2 .products_slider_slide_button {
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 425px) {
+    .page_2 .products_slider_slide_button {
+        padding-top: 75px;
+    }
+}
+
+@media (max-width: 350px) {
+    .page_2 .products_slider_slide_button {
+        padding-top: 60px;
     }
 }
