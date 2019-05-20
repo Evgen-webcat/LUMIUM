@@ -907,27 +907,38 @@ body {
 
             &.anim {
                 .dot {
-                    animation: zoomDot 1.5s forwards;
+                    animation: zoomDot 1.5s 1s backwards;
                 }
 
                 .logo_img {
-                    animation: zoomLogo_img 1.5s forwards;
+                    animation: zoomLogo_img 1.5s 1s backwards;
                 }
 
                 .diagramm_circle {
-                    animation: diagrammCircle 3.5s 1.5s forwards;
+                    animation: diagrammCircle 3.5s 2.5s backwards;
                 }
 
                 .parallax_img_wrap {
-                    animation: opacityIn 1.5s 3s forwards;
+                    animation: opacityIn 1.5s 4s backwards;
                 }
 
                 .aroma_block {
-                    animation: opacityIn 1.5s 3.5s forwards;
+                    animation: opacityIn 1.5s 4.5s backwards;
                 }
             }
 
             &.animReverse {
+
+                &::after {
+                    content: '';
+                    z-index: 10;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
 
                 .aroma_block,
                 .parallax_img_wrap {
@@ -938,12 +949,46 @@ body {
                     animation: diagrammCircleReverse 3.5s forwards;
                 }
 
+                .waves_img {
+                    circle {
+                        animation: circle 10s linear;
+
+                        &:nth-child(1) {
+                            animation-delay: 2s;
+                        }
+
+                        &:nth-child(2) {
+                            animation-delay: 2.5s;
+                        }
+
+                        &:nth-child(3) {
+                            animation-delay: 3s;
+                        }
+
+                        &:nth-child(4) {
+                            animation-delay: 3.5s;
+                        }
+
+                        &:nth-child(5) {
+                            animation-delay: 4s;
+                        }
+
+                        &:nth-child(6) {
+                            animation-delay: 4.5s;
+                        }
+
+                        &:nth-child(7) {
+                            animation-delay: 5s;
+                        }
+                    }
+                }
+
                 .dot {
-                    animation: zoomDotReverse 1.5s 7s backwards;
+                    animation: zoomDotReverse 1.5s 7s forwards;
                 }
 
                 .logo_img {
-                    animation: zoomLogo_imgReverse 1.5s 7s backwards;
+                    animation: zoomLogo_imgReverse 1.5s 7s forwards;
                 }
             }
 
@@ -963,10 +1008,10 @@ body {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 15px;
-                height: 15px;
+                width: 17%;
+                height: 17%;
                 border-radius: 50%;
-                background-color: #fff;
+                background-color: #4c4c4c;
                 box-shadow: 0 0 25px #fff;
                 //                                transition: 1.5s ease-in-out;
             }
@@ -977,9 +1022,10 @@ body {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 15px;
-                height: 15px;
+                width: 17%;
+                height: 17%;
                 border-radius: 50%;
+                box-shadow: 0 0 25px rgba(255, 255, 255, .5);
                 //                                transition: 1.5s ease-in-out;
 
                 &_path {
@@ -1084,7 +1130,7 @@ body {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                opacity: 0;
+//                opacity: 0;
                 //                transition: .5s ease-in-out;
                 overflow: hidden;
 
@@ -1130,7 +1176,7 @@ body {
                     position: relative;
                     top: 0;
                     left: 0;
-                    opacity: 0;
+//                    opacity: 0;
 
                     .aroma {
                         position: absolute;

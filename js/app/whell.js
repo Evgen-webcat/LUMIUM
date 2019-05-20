@@ -9,7 +9,6 @@ $(document).ready(function () {
     var parallaxLogo;
     var parallaxAroma;
     var parallax = false;
-    var waves;
     var animation = false;
     window.animReverse = animReverse;
 
@@ -102,14 +101,9 @@ $(document).ready(function () {
             pageAnimation();
         } else {
             animation = false;
-            clearInterval(waves);
-            waves = 0;
-            //            setTimeout(function () {
-            //                $('.diagramm').removeClass('anim animReverse');
-            //                if (parallax) {
-            //                    parallaxDestroy();
-            //                }
-            //            }, 1000);
+            setTimeout(function () {
+                $('.diagramm').removeClass('anim animReverse');
+            }, 500);
         }
 
         if (page.eq(currentPage).hasClass('page_slick')) {
@@ -163,19 +157,12 @@ $(document).ready(function () {
     };
 
     function pageAnimation() {
-        $('.diagramm').removeClass('anim animReverse');
         if (parallax) {
             parallaxDestroy();
         }
-        $('.text_1').fadeIn(0);
-        $('.text_2').fadeOut(0);
-        $('.waves').css('display', 'none');
-        $('.waves_anim').each(function () {
-            $(this)[0].endElement();
-        });
-        setTimeout(function () {
-            $('.diagramm').addClass('anim');
-        }, 1000);
+        $('.text_1').stop(true, true).fadeIn(0);
+        $('.text_2').stop(true, true).fadeOut(0);
+        $('.diagramm').addClass('anim');
         $('.diagramm_circle').one('animationstart', function () {
             vivus = new Vivus('diagramm', {
                 duration: 100,
@@ -205,26 +192,12 @@ $(document).ready(function () {
         $('.diagramm_circle').one('animationstart', function () {
             setTimeout(function () {
                 vivus.play(-1);
-            }, 1500);
-        });
-        $('.diagramm_circle').one('animationend', function () {
-            $('.text_1').fadeOut(500, function () {
-                $('.text_2').fadeIn(500);
-            });
-            $('.waves').css('display', 'block');
-            var currentWaves = 0;
-            var wavesLength = $('.waves_anim').length;
-            waves = setInterval(function () {
-                if (currentWaves !== wavesLength) {
-                    $('.waves_anim')[currentWaves].beginElement();
-                    currentWaves++;
-                } else {
-                    clearInterval(waves);
-                    setTimeout(function () {
-                        $('.waves').css('display', 'none');
-                    }, parseInt($('.waves_anim').eq(wavesLength - 1).attr('dur')) * 1000);
+                if (animation) {
+                    $('.text_1').delay(500).fadeOut(500, function () {
+                        $('.text_2').delay(500).fadeIn(500);
+                    });
                 }
-            }, 500);
+            }, 1500);
         });
         setTimeout(function () {
             bindWheel();
